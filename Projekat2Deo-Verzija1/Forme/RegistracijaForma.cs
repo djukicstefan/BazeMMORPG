@@ -13,10 +13,11 @@ namespace Projekat2Deo_Verzija1.Forme
 {
     public partial class RegistracijaForma : Form
     {
+        public enum Rasa { Čovek, Patuljak, Ork, Vilenjak, Demon };
+
         public RegistracijaForma()
         {
             InitializeComponent();
-
         }
 
         private void RegistracijaForma_Load(object sender, EventArgs e)
@@ -31,6 +32,12 @@ namespace Projekat2Deo_Verzija1.Forme
                 cmbServer.Items.Add(ser.Naziv);
             }
             cmbServer.SelectedIndex = 0;
+
+            foreach (Rasa r in Enum.GetValues(typeof(Rasa)))
+            {
+                cmbRasa.Items.Add(r.ToString());
+            }
+            cmbRasa.SelectedIndex = 0;
         }
 
         private void btnOdustani_Click(object sender, EventArgs e)
@@ -41,6 +48,7 @@ namespace Projekat2Deo_Verzija1.Forme
         private void btnPotvrdi_Click(object sender, EventArgs e)
         {
             DTOs.IgracBasic igrac = new DTOs.IgracBasic();
+
             igrac.Nadimak = txtNadimak.Text;
             igrac.Lozinka = txtLozinka.Text;
             igrac.Ime = txtIme.Text;
@@ -49,11 +57,42 @@ namespace Projekat2Deo_Verzija1.Forme
             igrac.Uzrast = (int)nudUzdrast.Value;
             String server = cmbServer.Text;
 
-            DTOManager.DodajIgraca(igrac, server);
+            //DTOs.LikBasic lik = NapraviLika((Rasa)cmbRasa.SelectedIndex);
+            string rasa = cmbRasa.Text;
+
+            DTOManager.DodajIgraca(igrac, server, rasa);
+
+
 
             MessageBox.Show("Vas nalog je uspesno kreiran!");
 
             this.Close();
         }
+
+      /*  private DTOs.LikBasic NapraviLika(Rasa r)
+        {
+            DTOs.LikBasic lik = null;
+
+            switch (r)
+            {
+                case Rasa.Čovek:
+                    lik = new DTOs.LikBasic.ČoverBasic();
+                    break;
+
+                case Rasa.Patuljak:
+                    break;
+
+                case Rasa.Ork:
+                    break;
+
+                case Rasa.Vilenjak:
+                    break;
+
+                case Rasa.Demon:
+                    break;
+            }
+
+            return lik;
+        }*/
     }
 }
