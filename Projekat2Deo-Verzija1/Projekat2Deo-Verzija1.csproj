@@ -87,6 +87,24 @@
     <Compile Include="Entiteti\SegrtId.cs" />
     <Compile Include="Entiteti\Server.cs" />
     <Compile Include="Entiteti\Zadatak.cs" />
+    <Compile Include="Forme\AlijansaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\AlijansaForma.Designer.cs">
+      <DependentUpon>AlijansaForma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\IgracForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\IgracForma.Designer.cs">
+      <DependentUpon>IgracForma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\OpremaIPredmetiForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\OpremaIPredmetiForma.Designer.cs">
+      <DependentUpon>OpremaIPredmetiForma.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\PrijavaForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +116,12 @@
     </Compile>
     <Compile Include="Forme\RegistracijaForma.Designer.cs">
       <DependentUpon>RegistracijaForma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\SegrtForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\SegrtForma.Designer.cs">
+      <DependentUpon>SegrtForma.cs</DependentUpon>
     </Compile>
     <Compile Include="PocetnaStranica.cs">
       <SubType>Form</SubType>
@@ -125,11 +149,23 @@
     <Compile Include="Mapiranja\ZadatakMapiranja.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forme\AlijansaForma.resx">
+      <DependentUpon>AlijansaForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\IgracForma.resx">
+      <DependentUpon>IgracForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\OpremaIPredmetiForma.resx">
+      <DependentUpon>OpremaIPredmetiForma.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\PrijavaForma.resx">
       <DependentUpon>PrijavaForma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\RegistracijaForma.resx">
       <DependentUpon>RegistracijaForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\SegrtForma.resx">
+      <DependentUpon>SegrtForma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PocetnaStranica.resx">
       <DependentUpon>PocetnaStranica.cs</DependentUpon>
