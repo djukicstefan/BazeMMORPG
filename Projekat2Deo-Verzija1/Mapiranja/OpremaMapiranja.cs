@@ -17,6 +17,11 @@ namespace Projekat2Deo_Verzija1.Mapiranja
             Id(o => o.Id, "ID").GeneratedBy.TriggerIdentity();
 
             References(o => o.Zadatak).Column("ID_Zadatka").LazyLoad();
+
+            HasManyToMany(o => o.Likovi)
+                .Table("VLASNIŠTVO_OPREME")
+                .ParentKeyColumn("ID_Opreme")
+                .ChildKeyColumn("ID_Lika"); 
         }
     }
 }

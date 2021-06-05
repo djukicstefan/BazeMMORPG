@@ -11,5 +11,12 @@ namespace Projekat2Deo_Verzija1.Entiteti
         public virtual int BrojIskustvenihPoena { get; set; }
         public virtual String Rasa { get; set; }
         public virtual Char PPredmet { get; set; }
+
+        public override string ToString()
+        {
+            return $"{BrojIskustvenihPoena} {Rasa} {PPredmet}";
+        }
     }
+
+  
 }

@@ -29,6 +29,11 @@ namespace Projekat2Deo_Verzija1.Mapiranja
             Map(l => l.Mana);
 
             HasMany(l => l.Segrti).KeyColumn("ID_Lika").LazyLoad().Cascade.All().Inverse();
+
+            HasManyToMany(l => l.Oprema)
+                .Table("VLASNIŠTVO_OPREME")
+                .ParentKeyColumn("ID_Lika")
+                .ChildKeyColumn("ID_Opreme");
         }
     }
 

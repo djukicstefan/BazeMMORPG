@@ -38,7 +38,7 @@ namespace Projekat2Deo_Verzija1.Mapiranja
             //HasOne(i => i.KontroliseLika).PropertyRef(i => i.Id).LazyLoad(); /*ne funkcionise iz nekog razloga*/
             References(i => i.KontroliseLika).Column("Id_Lika").LazyLoad();
 
-            HasMany(i => i.IndividualniZadaci).KeyColumn("Id_zadatka").LazyLoad().Cascade.All().Inverse();
+            HasMany(i => i.IndividualniZadaci).KeyColumn("ID_Igrača").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

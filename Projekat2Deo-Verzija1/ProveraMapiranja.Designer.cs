@@ -46,6 +46,7 @@
             this.cmdPregledOpreme = new System.Windows.Forms.Button();
             this.cmdProveraAlternativeC = new System.Windows.Forms.Button();
             this.cmdDodavanjeLika = new System.Windows.Forms.Button();
+            this.btnVlasnistvoOpreme = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmdUcitavanjeServera
@@ -228,11 +229,22 @@
             this.cmdDodavanjeLika.UseVisualStyleBackColor = true;
             this.cmdDodavanjeLika.Click += new System.EventHandler(this.cmdDodavanjeLika_Click);
             // 
+            // btnVlasnistvoOpreme
+            // 
+            this.btnVlasnistvoOpreme.Location = new System.Drawing.Point(460, 129);
+            this.btnVlasnistvoOpreme.Name = "btnVlasnistvoOpreme";
+            this.btnVlasnistvoOpreme.Size = new System.Drawing.Size(174, 48);
+            this.btnVlasnistvoOpreme.TabIndex = 18;
+            this.btnVlasnistvoOpreme.Text = "Provera vlasnisto opreme";
+            this.btnVlasnistvoOpreme.UseVisualStyleBackColor = true;
+            this.btnVlasnistvoOpreme.Click += new System.EventHandler(this.btnVlasnistvoOpreme_Click);
+            // 
             // frmProveraMapiranja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 696);
+            this.Controls.Add(this.btnVlasnistvoOpreme);
             this.Controls.Add(this.cmdDodavanjeLika);
             this.Controls.Add(this.cmdProveraAlternativeC);
             this.Controls.Add(this.cmdPregledOpreme);
@@ -277,6 +289,7 @@
         private System.Windows.Forms.Button cmdPregledOpreme;
         private System.Windows.Forms.Button cmdProveraAlternativeC;
         private System.Windows.Forms.Button cmdDodavanjeLika;
+        private System.Windows.Forms.Button btnVlasnistvoOpreme;
     }
 }
 

@@ -6,15 +6,35 @@ using System.Text;
 using NHibernate.Linq;
 using Projekat2Deo_Verzija1.Entiteti;
 using System.Windows.Forms;
-
-
-
+using System.Security.Cryptography;
 
 namespace Projekat2Deo_Verzija1
 {
     public class DTOManager
     {
         #region Alijansa
+        public static List<DTOs.AlijansaBasic> VratiAlijanse()
+        {
+            List<DTOs.AlijansaBasic> listaAlijansi = new List<DTOs.AlijansaBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IList<Alijansa> alijanse = s.QueryOver<Alijansa>()
+                                            .List<Alijansa>();
+
+                foreach(Alijansa a in alijanse)
+                {
+                    listaAlijansi.Add(new DTOs.AlijansaBasic(a.Naziv, a.MaxIgraca, a.MinIgraca, a.BonusIskustvo, a.BonusZdravlje));
+                }
+
+                s.Close();
+            }
+             catch(Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            return listaAlijansi;
+        }
         #endregion
 
         #region Server
@@ -150,7 +170,7 @@ namespace Projekat2Deo_Verzija1
             }
         }
 
-        public static bool PostojiIgrac(string nadimak, string lozinka)
+        public static Igrac PostojiIgrac(string nadimak, string lozinka)
         {
             try
             {
@@ -161,9 +181,10 @@ namespace Projekat2Deo_Verzija1
                                       .Where(i => i.Lozinka == lozinka)
                                       .List<Igrac>();
 
-                if(igrac.Count > 0)
+
+                if (igrac != null)
                 {
-                    return true;
+                    return igrac[0];
                 }
                 
             }
@@ -171,10 +192,37 @@ namespace Projekat2Deo_Verzija1
             {
                 MessageBox.Show(ec.Message);
             }
-            return false;
+            return null;
         }
 
         #endregion
 
+        #region Segrt
+
+        public static List<DTOs.SegrtBasic> VratiSegrte()
+        {
+            List<DTOs.SegrtBasic> listaSegrta = new List<DTOs.SegrtBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IList<Segrt> segrti = s.QueryOver<Segrt>()
+                                       .List<Segrt>();
+
+                foreach(Segrt ss in segrti)
+                {
+                    listaSegrta.Add(new DTOs.SegrtBasic(new DTOs.SegrtIdBasic(new DTOs.LikBasic(ss.Id.Gazda.Id, ss.Id.Gazda.Iskustvo, ss.Id.Gazda.StepenZamora, ss.Id.Gazda.Zdravlje, ss.Id.Gazda.KolicinaZlata), ss.Id.Ime), ss.Rasa, ss.BonusUSkrivanju));
+                }
+
+                s.Close();
+            }
+            catch(Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            return listaSegrta;
+        }
+
+        #endregion
     }
 }

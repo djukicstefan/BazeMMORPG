@@ -331,6 +331,11 @@ namespace Projekat2Deo_Verzija1
                 this.KolicinaZlata = kolicinaZlata;
             }
 
+            public override string ToString()
+            {
+                return $"{Id}  {Iskustvo}  {StepenZamora}  {Zdravlje}  {KolicinaZlata}";
+            }
+
             public class ČoverBasic : LikBasic
             {
                 public int VestinaSkrivanja;
@@ -340,6 +345,12 @@ namespace Projekat2Deo_Verzija1
                     : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata)
                 {
                     this.VestinaSkrivanja = vestinaSkrivanja;
+                }
+
+                public override string ToString()
+                 
+                {
+                    return $" {VestinaSkrivanja}";
                 }
             }
 
@@ -353,6 +364,11 @@ namespace Projekat2Deo_Verzija1
                 {
                     this.TipOruzja = tipOruzja;
                 }
+
+                public override string ToString()
+                {
+                    return $" {TipOruzja}";
+                }
             }
 
             public class OrkBasic : LikBasic
@@ -364,6 +380,10 @@ namespace Projekat2Deo_Verzija1
                     : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata)
                 {
                     this.TipOruzja = tipOruzja;
+                }
+                public override string ToString()
+                {
+                    return $" {TipOruzja}";
                 }
             }
 
@@ -377,6 +397,10 @@ namespace Projekat2Deo_Verzija1
                 {
                     this.Mana = mana;
                 }
+                public override string ToString()
+                {
+                    return $" {Mana}";
+                }
             }
 
             public class DemonBasic : LikBasic
@@ -388,6 +412,10 @@ namespace Projekat2Deo_Verzija1
                     : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata)
                 {
                     this.Mana = mana;
+                }
+                public override string ToString()
+                {
+                    return $" {Mana}";
                 }
             }
         }
@@ -748,6 +776,11 @@ namespace Projekat2Deo_Verzija1
                 this.Rasa = rasa;
                 this.BonusUSkrivanju = bonusUSkrivanju;
             }
+
+            public override string ToString()
+            {
+                return $"{this.Id} {this.Rasa} {this.BonusUSkrivanju}";
+            }
         }
 
         public class SegrtIdBasic
@@ -755,9 +788,15 @@ namespace Projekat2Deo_Verzija1
             public LikBasic Gazda { get; set; }
             public String Ime;
 
-            public SegrtIdBasic()
+            public SegrtIdBasic(LikBasic gazda, String imee)
             {
+                Gazda = gazda;
+                Ime = imee;
+            }
 
+            public override string ToString()
+            {
+                return $"{this.Gazda.Id} {this.Ime}";
             }
         }
 

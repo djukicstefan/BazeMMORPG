@@ -18,8 +18,8 @@ namespace Projekat2Deo_Verzija1.Mapiranja
 
             Map(z => z.BonusIskustva, "Bonus_iskustva");
 
-            HasMany(z => z.Alijanse).KeyColumn("Naziv_alijanse").LazyLoad().Cascade.All().Inverse();
-            HasMany(z => z.Igraci).KeyColumn("ID_Igrača").LazyLoad().Cascade.All().Inverse();
+            HasMany(z => z.Alijanse).KeyColumn("ID_Zadatka").LazyLoad().Cascade.All().Inverse();
+            HasMany(z => z.Igraci).KeyColumn("ID_Zadatka").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

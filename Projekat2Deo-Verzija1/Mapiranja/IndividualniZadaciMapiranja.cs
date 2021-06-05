@@ -18,8 +18,8 @@ namespace Projekat2Deo_Verzija1.Mapiranja
 
             Map(iz => iz.VremeResavanja, "Vreme_rešavanja");
 
-            References(iz => iz.IgracKojiResava).Column("ID_Igrača");
-            References(iz => iz.ZadatakKojiSeResava).Column("ID_Zadatka");
+            References(iz => iz.IgracKojiResava).Column("ID_Igrača").LazyLoad();
+            References(iz => iz.ZadatakKojiSeResava).Column("ID_Zadatka").LazyLoad();
         }
     }
 }

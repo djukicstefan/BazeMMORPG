@@ -14,11 +14,11 @@ namespace Projekat2Deo_Verzija1.Entiteti
         public virtual int StepenZamora { get; set; }
         public virtual int Zdravlje { get; set; }
         public virtual int KolicinaZlata { get; set; }
-        public virtual String Rasa { get; set; }
         public virtual int VestinaSkrivanja { get; set; }
         public virtual String TipOruzja { get; set; }
         public virtual int Mana { get; set; }
         public virtual IList<Segrt> Segrti { get; set; }
+        public virtual IList<Oprema> Oprema { get; set; }
     }
 
     public class Čovek : Lik

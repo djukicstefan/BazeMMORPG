@@ -10,5 +10,17 @@ namespace Projekat2Deo_Verzija1.Entiteti
     {
         public virtual int Id { get; protected set; }
         public virtual Zadatak Zadatak { get; set; }
+        public virtual IList<Lik> Likovi { get; set; }
+
+        public Oprema()
+        {
+            Likovi = new List<Lik>();
+        }
+
+        public override string ToString()
+        {
+            return $"{Id} {Zadatak}";
+        }
     }
+
 }

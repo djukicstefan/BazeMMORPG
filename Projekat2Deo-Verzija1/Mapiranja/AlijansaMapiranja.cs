@@ -32,7 +32,7 @@ namespace Projekat2Deo_Verzija1.Mapiranja
                  .Cascade.All()
                  .Inverse();*/
 
-            HasMany(a => a.GrupniZadaci).KeyColumn("Id_zadatka").LazyLoad().Cascade.All().Inverse();
+            HasMany(a => a.GrupniZadaci).KeyColumn("Naziv_alijanse").LazyLoad().Cascade.All().Inverse();
 
             HasMany(a => a.AlijanseUSavezu).KeyColumn("Naziv_prve").LazyLoad().Cascade.All().Inverse();
         }

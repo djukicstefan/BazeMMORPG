@@ -92,7 +92,7 @@ namespace Projekat2Deo_Verzija1
             Lik l = s.Load<Lik>(4);
 
             MessageBox.Show($"{l.Id}, {l.Iskustvo}, {l.StepenZamora}, {l.Zdravlje}, " +
-                $"{l.KolicinaZlata}, {l.Rasa}, {l.VestinaSkrivanja}, {l.TipOruzja}, {l.Mana}");
+                $"{l.KolicinaZlata}, {l.VestinaSkrivanja}, {l.TipOruzja}, {l.Mana}");
 
             s.Close();
         }
@@ -138,7 +138,7 @@ namespace Projekat2Deo_Verzija1
                 MessageBox.Show($"{i.Ime}, {i.Nadimak}, {i.Prezime}");
                 MessageBox.Show($"Pripada alijansi: {i.PripadaAlijansi.Naziv}, {i.PripadaAlijansi.MaxIgraca}");
                 MessageBox.Show($"Povezan na server: {i.PovezanNaServer.Naziv}");
-                MessageBox.Show($"Kontrolise lika: {i.KontroliseLika.Id}, {i.KontroliseLika.Rasa}, {i.KontroliseLika.Iskustvo}");
+                MessageBox.Show($"Kontrolise lika: {i.KontroliseLika.Id}, {i.KontroliseLika.Iskustvo}");
 
                 s.Close();
             }
@@ -264,6 +264,7 @@ namespace Projekat2Deo_Verzija1
             ISession s = DataLayer.GetSession();
 
             GrupniZadaci gp = s.Load<GrupniZadaci>(3);
+            Alijansa a = s.Load<Alijansa>("Alijansa");
 
             MessageBox.Show($"{gp.Id}, {gp.AlijansaKojaResava.Naziv}, {gp.ZadatakKojiSeResava.Id}, {gp.VremeResavanja}");
 
@@ -275,6 +276,7 @@ namespace Projekat2Deo_Verzija1
             ISession s = DataLayer.GetSession();
 
             IndividualniZadaci iz = s.Load<IndividualniZadaci>(4);
+            Igrac i = s.Load<Igrac>(7);
 
             MessageBox.Show($"{iz.Id}, {iz.IgracKojiResava.Ime}, {iz.IgracKojiResava.Prezime}, {iz.IgracKojiResava.Nadimak}, {iz.ZadatakKojiSeResava.Id}, {iz.ZadatakKojiSeResava.BonusIskustva}, {iz.VremeResavanja}");
 
@@ -388,6 +390,34 @@ namespace Projekat2Deo_Verzija1
                 s.Save(p);
 
                 s.Flush();
+                s.Close();
+            }
+            catch(Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        private void btnVlasnistvoOpreme_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Lik l = s.Get<Lik>(10);
+
+                foreach(Oprema o in l.Oprema)
+                {
+                    MessageBox.Show(o.Id.ToString());
+                }
+
+                Oprema oprema = s.Get<Oprema>(12);
+
+                foreach (Lik lik in oprema.Likovi)
+                {
+                    MessageBox.Show(lik.Id.ToString());
+                }
+
                 s.Close();
             }
             catch(Exception ec)

@@ -56,3 +56,7 @@ D:\Fakultet\TRECA\VI\Sistemi baza podataka\App\BazeMMORPG\Projekat2Deo-Verzija1\
 D:\Fakultet\TRECA\VI\Sistemi baza podataka\App\BazeMMORPG\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo-Verzija1.csproj.CopyComplete
 D:\Fakultet\TRECA\VI\Sistemi baza podataka\App\BazeMMORPG\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.Forme.AlijansaForma.resources
 D:\Fakultet\TRECA\VI\Sistemi baza podataka\App\BazeMMORPG\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.Forme.IgracForma.resources
+D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.Forme.AlijansaForma.resources
+D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.Forme.IgracForma.resources
+D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.Forme.OpremaIPredmetiForma.resources
+D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.Forme.SegrtForma.resources

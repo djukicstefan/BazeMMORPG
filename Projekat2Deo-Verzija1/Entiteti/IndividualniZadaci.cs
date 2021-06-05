@@ -12,5 +12,10 @@ namespace Projekat2Deo_Verzija1.Entiteti
         public virtual Igrac IgracKojiResava { get; set; }
         public virtual Zadatak ZadatakKojiSeResava { get; set; }
         public virtual String VremeResavanja { get; set; }
+
+        public override string ToString()
+        {
+            return $"{ZadatakKojiSeResava.BonusIskustva} {VremeResavanja}";
+        }
     }
 }

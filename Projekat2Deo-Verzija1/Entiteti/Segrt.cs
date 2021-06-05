@@ -16,5 +16,10 @@ namespace Projekat2Deo_Verzija1.Entiteti
         {
             Id = new SegrtId();
         }
+
+        public override string ToString()
+        {
+            return $"{Id} {Rasa} {BonusUSkrivanju}";
+        }
     }
 }

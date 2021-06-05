@@ -34,5 +34,10 @@ namespace Projekat2Deo_Verzija1.Entiteti
         {
             return base.GetHashCode();
         }
+
+        public override string ToString()
+        {
+            return $"{Gazda.Id} {Ime}";
+        }
     }
 }

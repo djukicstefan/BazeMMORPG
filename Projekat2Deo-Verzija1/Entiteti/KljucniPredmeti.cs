@@ -12,5 +12,10 @@ namespace Projekat2Deo_Verzija1.Entiteti
         public virtual String Naziv { get; set; }
         public virtual String Opis { get; set; }
         public virtual String NadimakVlasnika {get; set;}
+
+        public override string ToString()
+        {
+            return $"{Naziv} {Opis} {NadimakVlasnika}";
+        }
     }
 }
