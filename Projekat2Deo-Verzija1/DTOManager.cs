@@ -223,6 +223,43 @@ namespace Projekat2Deo_Verzija1
             return listaSegrta;
         }
 
+        public static Lik OtpustiSegrta(SegrtId seg)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Segrt segrt = s.Load<Segrt>(seg);
+
+                int idLika = segrt.Id.Gazda.Id;
+
+                Lik lik = s.Load<Lik>(idLika);
+
+                
+
+                foreach(Segrt segi in lik.Segrti)
+                {
+                    if (segi.Id.Gazda.Id == segrt.Id.Gazda.Id && segi.Id.Ime.CompareTo(segi.Id.Ime) == 0) 
+                    {
+                            lik.Segrti.Remove(segi);
+                            break;
+                    }
+                }
+
+                s.Update(lik);
+                s.Delete(segrt);
+
+                s.Flush();
+                s.Close();
+                return lik;
+            }
+            catch(Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            return null;
+        }
+
         #endregion
     }
 }

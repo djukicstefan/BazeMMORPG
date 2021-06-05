@@ -21,7 +21,6 @@ D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Proj
 D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo-Verzija1.csproj.CopyComplete
 D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo-Verzija1.exe
 D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo-Verzija1.pdb
-D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo-Verzija1.csprojAssemblyReference.cache
 D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.frmProveraMapiranja.resources
 D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.frmPocetnaStranica.resources
 D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.Forme.RegistracijaForma.resources
@@ -60,3 +59,4 @@ D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Proj
 D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.Forme.IgracForma.resources
 D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.Forme.OpremaIPredmetiForma.resources
 D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.Forme.SegrtForma.resources
+d:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo-Verzija1.csprojAssemblyReference.cache

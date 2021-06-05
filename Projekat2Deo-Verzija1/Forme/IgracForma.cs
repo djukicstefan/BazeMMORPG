@@ -13,6 +13,7 @@ namespace Projekat2Deo_Verzija1.Forme
 {
     public partial class IgracForma : Form
     {
+        Igrac igrac { get; set; }
         public IgracForma()
         {
             InitializeComponent();
@@ -21,6 +22,7 @@ namespace Projekat2Deo_Verzija1.Forme
         public IgracForma(Igrac i)
         {
             InitializeComponent();
+            igrac = i;
             UcitajPodatke(i);
         }
 
@@ -33,7 +35,10 @@ namespace Projekat2Deo_Verzija1.Forme
             lblNadimakServer.Text = $"{i.Nadimak}@{i.PovezanNaServer.Naziv}";
 
 
-            lblRasa.Text = i.KontroliseLika.GetType().Name;
+            var p = i.KontroliseLika.ToString().Split('.');
+            
+
+            lblRasa.Text = p[2];
             lblZlato.Text = i.KontroliseLika.KolicinaZlata.ToString();
             lblIskustvo.Text = i.KontroliseLika.Iskustvo.ToString();
             lblZdravlje.Text = i.KontroliseLika.Zdravlje.ToString();
@@ -91,6 +96,17 @@ namespace Projekat2Deo_Verzija1.Forme
 
         }
 
-        
+        private void btnOtpustiSegrta_Click(object sender, EventArgs e)
+        {
+            if (listTrenutniSegrti.Items.Count > 0)
+            {
+                var curIndex = listTrenutniSegrti.SelectedIndex;
+                Segrt selektovaniSegrt = (Segrt)listTrenutniSegrti.Items[curIndex];
+                Lik lik = DTOManager.OtpustiSegrta(selektovaniSegrt.Id);
+                igrac.KontroliseLika = lik;
+                UcitajPodatke(igrac);
+            }
+            
+        }
     }
 }

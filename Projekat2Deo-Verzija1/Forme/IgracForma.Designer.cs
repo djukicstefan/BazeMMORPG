@@ -78,9 +78,9 @@ namespace Projekat2Deo_Verzija1.Forme
             this.groupBox1.Controls.Add(this.lblPrezime);
             this.groupBox1.Controls.Add(this.lblIme);
             this.groupBox1.Location = new System.Drawing.Point(16, 15);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(405, 159);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -151,9 +151,9 @@ namespace Projekat2Deo_Verzija1.Forme
             this.groupBox2.Controls.Add(this.lblZlato);
             this.groupBox2.Controls.Add(this.lblRasa);
             this.groupBox2.Location = new System.Drawing.Point(16, 181);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(633, 201);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
@@ -174,7 +174,7 @@ namespace Projekat2Deo_Verzija1.Forme
             this.listInventar.FormattingEnabled = true;
             this.listInventar.ItemHeight = 16;
             this.listInventar.Location = new System.Drawing.Point(405, 42);
-            this.listInventar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listInventar.Margin = new System.Windows.Forms.Padding(4);
             this.listInventar.Name = "listInventar";
             this.listInventar.Size = new System.Drawing.Size(211, 148);
             this.listInventar.TabIndex = 9;
@@ -184,7 +184,7 @@ namespace Projekat2Deo_Verzija1.Forme
             this.listTrenutniSegrti.FormattingEnabled = true;
             this.listTrenutniSegrti.ItemHeight = 16;
             this.listTrenutniSegrti.Location = new System.Drawing.Point(185, 42);
-            this.listTrenutniSegrti.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listTrenutniSegrti.Margin = new System.Windows.Forms.Padding(4);
             this.listTrenutniSegrti.Name = "listTrenutniSegrti";
             this.listTrenutniSegrti.Size = new System.Drawing.Size(211, 100);
             this.listTrenutniSegrti.TabIndex = 8;
@@ -202,12 +202,13 @@ namespace Projekat2Deo_Verzija1.Forme
             // btnOtpustiSegrta
             // 
             this.btnOtpustiSegrta.Location = new System.Drawing.Point(185, 162);
-            this.btnOtpustiSegrta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOtpustiSegrta.Margin = new System.Windows.Forms.Padding(4);
             this.btnOtpustiSegrta.Name = "btnOtpustiSegrta";
             this.btnOtpustiSegrta.Size = new System.Drawing.Size(212, 28);
             this.btnOtpustiSegrta.TabIndex = 7;
             this.btnOtpustiSegrta.Text = "Otpusti";
             this.btnOtpustiSegrta.UseVisualStyleBackColor = true;
+            this.btnOtpustiSegrta.Click += new System.EventHandler(this.btnOtpustiSegrta_Click);
             // 
             // lblAlijansa
             // 
@@ -285,9 +286,9 @@ namespace Projekat2Deo_Verzija1.Forme
             this.groupBox3.Controls.Add(this.btnNapustiAlijansu);
             this.groupBox3.Controls.Add(this.btnPridruziSeAlijansi);
             this.groupBox3.Location = new System.Drawing.Point(661, 389);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(224, 265);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
@@ -298,7 +299,7 @@ namespace Projekat2Deo_Verzija1.Forme
             this.listAlijanse.FormattingEnabled = true;
             this.listAlijanse.ItemHeight = 16;
             this.listAlijanse.Location = new System.Drawing.Point(8, 23);
-            this.listAlijanse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listAlijanse.Margin = new System.Windows.Forms.Padding(4);
             this.listAlijanse.Name = "listAlijanse";
             this.listAlijanse.Size = new System.Drawing.Size(204, 148);
             this.listAlijanse.TabIndex = 6;
@@ -306,7 +307,7 @@ namespace Projekat2Deo_Verzija1.Forme
             // btnNapustiAlijansu
             // 
             this.btnNapustiAlijansu.Location = new System.Drawing.Point(8, 228);
-            this.btnNapustiAlijansu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNapustiAlijansu.Margin = new System.Windows.Forms.Padding(4);
             this.btnNapustiAlijansu.Name = "btnNapustiAlijansu";
             this.btnNapustiAlijansu.Size = new System.Drawing.Size(205, 28);
             this.btnNapustiAlijansu.TabIndex = 7;
@@ -316,7 +317,7 @@ namespace Projekat2Deo_Verzija1.Forme
             // btnPridruziSeAlijansi
             // 
             this.btnPridruziSeAlijansi.Location = new System.Drawing.Point(8, 185);
-            this.btnPridruziSeAlijansi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPridruziSeAlijansi.Margin = new System.Windows.Forms.Padding(4);
             this.btnPridruziSeAlijansi.Name = "btnPridruziSeAlijansi";
             this.btnPridruziSeAlijansi.Size = new System.Drawing.Size(205, 28);
             this.btnPridruziSeAlijansi.TabIndex = 4;
@@ -331,9 +332,9 @@ namespace Projekat2Deo_Verzija1.Forme
             this.groupBox5.Controls.Add(this.btnInfoZadatak);
             this.groupBox5.Controls.Add(this.btnResiZadatak);
             this.groupBox5.Location = new System.Drawing.Point(16, 389);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox5.Size = new System.Drawing.Size(405, 265);
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
@@ -344,7 +345,7 @@ namespace Projekat2Deo_Verzija1.Forme
             this.listIndividualniZadaci.FormattingEnabled = true;
             this.listIndividualniZadaci.ItemHeight = 16;
             this.listIndividualniZadaci.Location = new System.Drawing.Point(8, 23);
-            this.listIndividualniZadaci.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listIndividualniZadaci.Margin = new System.Windows.Forms.Padding(4);
             this.listIndividualniZadaci.Name = "listIndividualniZadaci";
             this.listIndividualniZadaci.Size = new System.Drawing.Size(192, 228);
             this.listIndividualniZadaci.TabIndex = 9;
@@ -352,7 +353,7 @@ namespace Projekat2Deo_Verzija1.Forme
             // btnObrisiZadatak
             // 
             this.btnObrisiZadatak.Location = new System.Drawing.Point(209, 224);
-            this.btnObrisiZadatak.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnObrisiZadatak.Margin = new System.Windows.Forms.Padding(4);
             this.btnObrisiZadatak.Name = "btnObrisiZadatak";
             this.btnObrisiZadatak.Size = new System.Drawing.Size(187, 28);
             this.btnObrisiZadatak.TabIndex = 13;
@@ -362,7 +363,7 @@ namespace Projekat2Deo_Verzija1.Forme
             // btnDodajZadatak
             // 
             this.btnDodajZadatak.Location = new System.Drawing.Point(209, 188);
-            this.btnDodajZadatak.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDodajZadatak.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodajZadatak.Name = "btnDodajZadatak";
             this.btnDodajZadatak.Size = new System.Drawing.Size(187, 28);
             this.btnDodajZadatak.TabIndex = 12;
@@ -372,7 +373,7 @@ namespace Projekat2Deo_Verzija1.Forme
             // btnInfoZadatak
             // 
             this.btnInfoZadatak.Location = new System.Drawing.Point(209, 59);
-            this.btnInfoZadatak.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInfoZadatak.Margin = new System.Windows.Forms.Padding(4);
             this.btnInfoZadatak.Name = "btnInfoZadatak";
             this.btnInfoZadatak.Size = new System.Drawing.Size(181, 28);
             this.btnInfoZadatak.TabIndex = 11;
@@ -382,7 +383,7 @@ namespace Projekat2Deo_Verzija1.Forme
             // btnResiZadatak
             // 
             this.btnResiZadatak.Location = new System.Drawing.Point(209, 23);
-            this.btnResiZadatak.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnResiZadatak.Margin = new System.Windows.Forms.Padding(4);
             this.btnResiZadatak.Name = "btnResiZadatak";
             this.btnResiZadatak.Size = new System.Drawing.Size(181, 28);
             this.btnResiZadatak.TabIndex = 10;
@@ -395,9 +396,9 @@ namespace Projekat2Deo_Verzija1.Forme
             this.groupBox4.Controls.Add(this.listSegrti);
             this.groupBox4.Controls.Add(this.btnZaposliZegrta);
             this.groupBox4.Location = new System.Drawing.Point(429, 389);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(224, 265);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
@@ -406,7 +407,7 @@ namespace Projekat2Deo_Verzija1.Forme
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(11, 228);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(205, 28);
             this.button1.TabIndex = 8;
@@ -418,7 +419,7 @@ namespace Projekat2Deo_Verzija1.Forme
             this.listSegrti.FormattingEnabled = true;
             this.listSegrti.ItemHeight = 16;
             this.listSegrti.Location = new System.Drawing.Point(8, 23);
-            this.listSegrti.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listSegrti.Margin = new System.Windows.Forms.Padding(4);
             this.listSegrti.Name = "listSegrti";
             this.listSegrti.Size = new System.Drawing.Size(204, 148);
             this.listSegrti.TabIndex = 6;
@@ -426,7 +427,7 @@ namespace Projekat2Deo_Verzija1.Forme
             // btnZaposliZegrta
             // 
             this.btnZaposliZegrta.Location = new System.Drawing.Point(8, 185);
-            this.btnZaposliZegrta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnZaposliZegrta.Margin = new System.Windows.Forms.Padding(4);
             this.btnZaposliZegrta.Name = "btnZaposliZegrta";
             this.btnZaposliZegrta.Size = new System.Drawing.Size(205, 28);
             this.btnZaposliZegrta.TabIndex = 4;
@@ -436,7 +437,7 @@ namespace Projekat2Deo_Verzija1.Forme
             // btnItems
             // 
             this.btnItems.Location = new System.Drawing.Point(483, 145);
-            this.btnItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnItems.Margin = new System.Windows.Forms.Padding(4);
             this.btnItems.Name = "btnItems";
             this.btnItems.Size = new System.Drawing.Size(171, 28);
             this.btnItems.TabIndex = 7;
@@ -454,7 +455,7 @@ namespace Projekat2Deo_Verzija1.Forme
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "IgracForma";
             this.Text = "IgracForma";
             this.Load += new System.EventHandler(this.IgracForma_Load);

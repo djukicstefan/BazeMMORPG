@@ -285,18 +285,24 @@ namespace Projekat2Deo_Verzija1
 
         private void cmdDodajSegrta_Click(object sender, EventArgs e)
         {
+            //INSERT INTO ŠEGRT(ID_Lika, Ime, Rasa, Bonus_u_skrivanju) VALUES(9, 'Atlas', 'Čovek', 10);
+            //INSERT INTO ŠEGRT(ID_Lika, Ime, Rasa, Bonus_u_skrivanju) VALUES(5, 'Luci', 'Demon', 45);
+            
+           
+            //INSERT INTO ŠEGRT(ID_Lika, Ime, Rasa, Bonus_u_skrivanju) VALUES(7, 'Zotlan', 'Patuljak', 26);
+           
             ISession s = DataLayer.GetSession();
 
-            Lik l = s.Load<Lik>(9);
+            Lik l = s.Load<Lik>(7);
 
             Segrt segrt = new Segrt() 
             {
-                Rasa = "Vilenjak",
-                BonusUSkrivanju = 75
+                Rasa = "Patuljak",
+                BonusUSkrivanju = 26
             };
 
             segrt.Id.Gazda = l;
-            segrt.Id.Ime = "Merlin";
+            segrt.Id.Ime = "Zotlan";
 
             l.Segrti.Add(segrt);
 
@@ -417,6 +423,22 @@ namespace Projekat2Deo_Verzija1
                 {
                     MessageBox.Show(lik.Id.ToString());
                 }
+
+                s.Close();
+            }
+            catch(Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        private void btnUcitavanjeIgraca_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Igrac ig = s.Get<Igrac>(8);
 
                 s.Close();
             }

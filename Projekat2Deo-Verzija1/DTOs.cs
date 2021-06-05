@@ -794,6 +794,11 @@ namespace Projekat2Deo_Verzija1
                 Ime = imee;
             }
 
+            public SegrtIdBasic()
+            {
+                
+            }
+
             public override string ToString()
             {
                 return $"{this.Gazda.Id} {this.Ime}";

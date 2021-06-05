@@ -16,7 +16,7 @@ namespace Projekat2Deo_Verzija1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPocetnaStranica());
+            Application.Run(new frmProveraMapiranja());
         }
     }
 }

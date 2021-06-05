@@ -47,6 +47,7 @@
             this.cmdProveraAlternativeC = new System.Windows.Forms.Button();
             this.cmdDodavanjeLika = new System.Windows.Forms.Button();
             this.btnVlasnistvoOpreme = new System.Windows.Forms.Button();
+            this.btnUcitavanjeIgraca = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmdUcitavanjeServera
@@ -239,11 +240,22 @@
             this.btnVlasnistvoOpreme.UseVisualStyleBackColor = true;
             this.btnVlasnistvoOpreme.Click += new System.EventHandler(this.btnVlasnistvoOpreme_Click);
             // 
+            // btnUcitavanjeIgraca
+            // 
+            this.btnUcitavanjeIgraca.Location = new System.Drawing.Point(460, 192);
+            this.btnUcitavanjeIgraca.Name = "btnUcitavanjeIgraca";
+            this.btnUcitavanjeIgraca.Size = new System.Drawing.Size(183, 56);
+            this.btnUcitavanjeIgraca.TabIndex = 19;
+            this.btnUcitavanjeIgraca.Text = "Ucitavanje igraca";
+            this.btnUcitavanjeIgraca.UseVisualStyleBackColor = true;
+            this.btnUcitavanjeIgraca.Click += new System.EventHandler(this.btnUcitavanjeIgraca_Click);
+            // 
             // frmProveraMapiranja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 696);
+            this.Controls.Add(this.btnUcitavanjeIgraca);
             this.Controls.Add(this.btnVlasnistvoOpreme);
             this.Controls.Add(this.cmdDodavanjeLika);
             this.Controls.Add(this.cmdProveraAlternativeC);
@@ -290,6 +302,7 @@
         private System.Windows.Forms.Button cmdProveraAlternativeC;
         private System.Windows.Forms.Button cmdDodavanjeLika;
         private System.Windows.Forms.Button btnVlasnistvoOpreme;
+        private System.Windows.Forms.Button btnUcitavanjeIgraca;
     }
 }
 
