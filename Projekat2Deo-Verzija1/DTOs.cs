@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NHibernate.Mapping.ByCode.Impl;
 using Projekat2Deo_Verzija1.Entiteti;
 
 namespace Projekat2Deo_Verzija1
@@ -865,11 +866,13 @@ namespace Projekat2Deo_Verzija1
 
             public virtual IList<GrupniZadaciBasic> Alijanse { get; set; }
             public virtual IList<IndividualniZadaciBasic> Igraci { get; set; }
+            public virtual IList<OpremaBasic> Oprema { get; set; }
 
             public ZadatakBasic()
             {
                 Alijanse = new List<GrupniZadaciBasic>();
                 Igraci = new List<IndividualniZadaciBasic>();
+                Oprema = new List<OpremaBasic>();
             }
 
             public ZadatakBasic(int id, int bonus)
