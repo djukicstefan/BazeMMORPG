@@ -286,6 +286,31 @@ namespace Projekat2Deo_Verzija1
             return listaSegrta;
         }
 
+        public static List<DTOs.SegrtBasic> VratiSegrte(int idLika)
+        {
+            List<DTOs.SegrtBasic> listaSegrta = new List<DTOs.SegrtBasic>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IList<Segrt> segrti = s.QueryOver<Segrt>()
+                                       .List<Segrt>();
+
+                foreach (Segrt ss in segrti)
+                {
+                    if(ss.Id.Gazda.Id == idLika)
+                        listaSegrta.Add(new DTOs.SegrtBasic(new DTOs.SegrtIdBasic(new DTOs.LikBasic(ss.Id.Gazda.Id, ss.Id.Gazda.Iskustvo, ss.Id.Gazda.StepenZamora, ss.Id.Gazda.Zdravlje, ss.Id.Gazda.KolicinaZlata, ss.Id.Gazda.VestinaSkrivanja, ss.Id.Gazda.TipOruzja, ss.Id.Gazda.Mana), ss.Id.Ime), ss.Rasa, ss.BonusUSkrivanju));
+                }
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            return listaSegrta;
+        }
+
         public static Lik OtpustiSegrta(SegrtId seg)
         {
             try
@@ -351,6 +376,36 @@ namespace Projekat2Deo_Verzija1
             return lik;
         }
 
+        public static List<DTOs.LikBasic> VratiLikove()
+        {
+            List<DTOs.LikBasic> listaLikova = new List<DTOs.LikBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IList<Lik> likovi = s.QueryOver<Lik>()
+                                            .List<Lik>();
+
+                foreach (Lik l in likovi)
+                {
+                    listaLikova.Add(new DTOs.LikBasic(l.Id, l.Iskustvo, l.StepenZamora, l.Zdravlje, l.KolicinaZlata, l.VestinaSkrivanja, l.TipOruzja, l.Mana));
+                }
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            return listaLikova;
+        }
+
+        #endregion
+
+        #region Oprema
+        public static List<DTOs.OpremaBasic> VratiOpremuLika(int id)
+        {
+
+        }
         #endregion
     }
 }

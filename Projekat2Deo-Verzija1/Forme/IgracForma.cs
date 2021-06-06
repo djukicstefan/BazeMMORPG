@@ -23,7 +23,7 @@ namespace Projekat2Deo_Verzija1.Forme
         {
             InitializeComponent();
             igrac = i;
-            UcitajPodatke(i);
+            UcitajPodatke(igrac);
         }
 
         private void UcitajPodatke(DTOs.IgracBasic i)
@@ -38,7 +38,7 @@ namespace Projekat2Deo_Verzija1.Forme
             var p = i.KontroliseLika.ToString().Split('.');
             
 
-            lblRasa.Text = p[2];
+            //lblRasa.Text = p[2];
             lblZlato.Text = i.KontroliseLika.KolicinaZlata.ToString();
             lblIskustvo.Text = i.KontroliseLika.Iskustvo.ToString();
             lblZdravlje.Text = i.KontroliseLika.Zdravlje.ToString();
@@ -53,9 +53,17 @@ namespace Projekat2Deo_Verzija1.Forme
             if (i.PripadaAlijansi != null)
                 lblAlijansa.Text = i.PripadaAlijansi.Naziv;
 
-            if(i.KontroliseLika.Segrti.Count > 0)
+            //if(i.KontroliseLika.Segrti.Count > 0)
+            //{
+            //    foreach(DTOs.SegrtBasic s in i.KontroliseLika.Segrti)
+            //    {
+            //        listTrenutniSegrti.Items.Add(s);
+            //    }
+            //}
+            List<DTOs.SegrtBasic> TrenutniSegrti = DTOManager.VratiSegrte(i.KontroliseLika.Id);
+            if(TrenutniSegrti.Count > 0)
             {
-                foreach(DTOs.SegrtBasic s in i.KontroliseLika.Segrti)
+                foreach(DTOs.SegrtBasic s in TrenutniSegrti)
                 {
                     listTrenutniSegrti.Items.Add(s);
                 }
