@@ -11,9 +11,10 @@ using Projekat2Deo_Verzija1;
 
 namespace Projekat2Deo_Verzija1.Forme
 {
+    public enum Rasa { Čovek, Patuljak, Ork, Vilenjak, Demon };
+
     public partial class RegistracijaForma : Form
     {
-        public enum Rasa { Čovek, Patuljak, Ork, Vilenjak, Demon };
 
         public RegistracijaForma()
         {

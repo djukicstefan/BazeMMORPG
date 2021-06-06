@@ -60,6 +60,231 @@ namespace Projekat2Deo_Verzija1
             return alijansa;
         }
 
+        public static void NapustiAlijansu(string naziv, int igracId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Alijansa a = s.Get<Alijansa>(naziv);
+                Igrac i = s.Get<Igrac>(igracId);
+
+                i.PripadaAlijansi = null;
+
+                foreach (Igrac ig in a.Igraci)
+                {
+                    if (ig.Id == i.Id)
+                    {
+                        a.Igraci.Remove(ig);
+                        break;
+                    }
+                }
+
+                s.Update(i);
+                s.Update(a);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        public static void PridruziSeAlijansi(string naziv, int igracId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Alijansa a = s.Get<Alijansa>(naziv);
+                Igrac i = s.Get<Igrac>(igracId);
+
+                i.PripadaAlijansi = a;
+                a.Igraci.Add(i);
+
+                s.Update(i);
+                s.Update(a);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        public static void IzmeniAlijansu(DTOs.AlijansaBasic alijansa)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Alijansa a = s.Get<Alijansa>(alijansa.Naziv);
+
+                a.MaxIgraca = alijansa.MaxIgraca;
+                a.MinIgraca = alijansa.MinIgraca;
+                a.BonusIskustvo = alijansa.BonusIskustvo;
+                a.BonusZdravlje = alijansa.BonusZdravlje;
+                
+                s.Update(a);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        public static void ObrisiAlijansu(string naziv)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Alijansa a = s.Get<Alijansa>(naziv);
+
+                foreach (Igrac i in a.Igraci)
+                { 
+                    i.PripadaAlijansi = null;
+                    s.Update(i);
+                }
+                a.Igraci.Clear();
+
+                IList<SavezAlijansi> savezi = s.QueryOver<SavezAlijansi>().List<SavezAlijansi>();
+                foreach (SavezAlijansi sa in savezi)
+                {
+                    Alijansa a1 = sa.Kljuc.AlijansaJedan;
+                    Alijansa a2 = sa.Kljuc.AlijansaDva;
+
+                    string a1Naziv = a1.Naziv;
+                    string a2Naziv = a2.Naziv;
+
+                    if (a1Naziv == a.Naziv || a2Naziv == a.Naziv)
+                        s.Delete(sa);
+                }
+
+                foreach (GrupniZadaci gz in a.GrupniZadaci)
+                    s.Delete(gz);
+
+                s.Delete(a);
+
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        #endregion
+
+        #region SavezAlijansi
+
+        public static List<DTOs.AlijansaBasic> VratiAlijanseUSavezu(string naziv)
+        {
+            List<DTOs.AlijansaBasic> alijanse = new List<DTOs.AlijansaBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IList<SavezAlijansi> savezi = s.QueryOver<SavezAlijansi>().List<SavezAlijansi>();
+
+                foreach (SavezAlijansi sa in savezi)
+                {
+                    Alijansa a1 = sa.Kljuc.AlijansaJedan;
+                    Alijansa a2 = sa.Kljuc.AlijansaDva;
+
+                    string a1Naziv = a1.Naziv;
+                    string a2Naziv = a2.Naziv;
+
+                    if (a1Naziv == naziv)
+                    {
+                        alijanse.Add(new DTOs.AlijansaBasic(a2.Naziv, a2.MaxIgraca, a2.MinIgraca, a2.BonusIskustvo, a2.BonusZdravlje));
+                    }
+                    else if (a2Naziv == naziv)
+                    {
+                        alijanse.Add(new DTOs.AlijansaBasic(a1.Naziv, a1.MaxIgraca, a1.MinIgraca, a1.BonusIskustvo, a1.BonusZdravlje));
+                    }
+                }
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            return alijanse;
+        }
+
+        public static void SklopiSavez(string nazivPrve, string nazivDruge)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Alijansa a1 = s.Get<Alijansa>(nazivPrve);
+                Alijansa a2 = s.Get<Alijansa>(nazivDruge);
+                SavezAlijansiId savezId = new SavezAlijansiId();
+                SavezAlijansi sa = new SavezAlijansi();
+
+                savezId.AlijansaJedan = a1;
+                savezId.AlijansaDva = a2;
+                sa.Kljuc = savezId;
+
+                a1.AlijanseUSavezu.Add(sa);
+                a2.AlijanseUSavezu.Add(sa);
+
+                s.Save(sa);
+                s.Update(a1);
+                s.Update(a2);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        public static void PrekiniSavez(string nazivPrve, string nazivDruge)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Alijansa a1 = s.Get<Alijansa>(nazivPrve);
+                Alijansa a2 = s.Get<Alijansa>(nazivDruge);
+
+                SavezAlijansiId savezId = new SavezAlijansiId();
+                savezId.AlijansaJedan = a1;
+                savezId.AlijansaDva = a2;
+
+                SavezAlijansi sa = s.Get<SavezAlijansi>(savezId);
+
+                a1.AlijanseUSavezu.Remove(sa);
+                a2.AlijanseUSavezu.Remove(sa);
+
+                s.Delete(sa);
+                s.Update(a1);
+                s.Update(a2);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
         #endregion
 
         #region Server
@@ -243,7 +468,7 @@ namespace Projekat2Deo_Verzija1
                     igracc.BrojPoenaUSesiji = igrac[0].BrojPoenaUSesiji;
                     igracc.KolicinaZlataUSesiji = igrac[0].KolicinaZlataUSesiji;
                     igracc.PovezanNaServer = VratiServer(igrac[0].PovezanNaServer.Id);
-                    igracc.PripadaAlijansi = VratiAlijansu(igrac[0].PripadaAlijansi.Naziv);
+                    igracc.PripadaAlijansi = igrac[0].PripadaAlijansi != null ? VratiAlijansu(igrac[0].PripadaAlijansi.Naziv) : null;
                     igracc.KontroliseLika = VratiLika(igrac[0].KontroliseLika.Id);
                 }
                 
@@ -315,21 +540,21 @@ namespace Projekat2Deo_Verzija1
             return listaSegrta;
         }
 
-        public static Lik OtpustiSegrta(SegrtId seg)
+        public static void OtpustiSegrta(DTOs.SegrtIdBasic seg)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                Segrt segrt = s.Load<Segrt>(seg);
-
-                int idLika = segrt.Id.Gazda.Id;
-
-                Lik lik = s.Load<Lik>(idLika);
-
+                Lik lik = s.Load<Lik>(seg.Gazda.Id);
+                SegrtId segId = new SegrtId();
                 
+                segId.Gazda = lik;
+                segId.Ime = seg.Ime;
 
-                foreach(Segrt segi in lik.Segrti)
+                Segrt segrt = s.Load<Segrt>(segId);
+
+                foreach (Segrt segi in lik.Segrti)
                 {
                     if (segi.Id.Gazda.Id == segrt.Id.Gazda.Id && segi.Id.Ime.CompareTo(segi.Id.Ime) == 0) 
                     {
@@ -343,13 +568,41 @@ namespace Projekat2Deo_Verzija1
 
                 s.Flush();
                 s.Close();
-                return lik;
             }
             catch(Exception ec)
             {
                 MessageBox.Show(ec.Message);
             }
-            return null;
+        }
+
+        public static void DodajSegrta(DTOs.SegrtBasic seg)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Segrt se = new Segrt();
+                SegrtId seId = new SegrtId();
+                Lik l = s.Get<Lik>(seg.Id.Gazda.Id);
+
+                seId.Gazda = l;
+                seId.Ime = seg.Id.Ime;
+                se.Id = seId;
+                se.Rasa = seg.Rasa;
+                se.BonusUSkrivanju = seg.BonusUSkrivanju;
+
+                l.Segrti.Add(se);
+
+                s.Update(l);
+                s.Save(se);
+                s.Flush();
+    
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
         }
 
         #endregion
@@ -513,5 +766,73 @@ namespace Projekat2Deo_Verzija1
             return listaIndividualnihZadataka;
         }
         #endregion
+
+        #region GrupniZadaci
+        
+        public static List<DTOs.GrupniZadaciBasic> VratiGrupneZadatkeAlijanse(string naziv)
+        {
+            List<DTOs.GrupniZadaciBasic> listaGrupnihZadataka = new List<DTOs.GrupniZadaciBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IList<GrupniZadaci> lista = s.QueryOver<GrupniZadaci>()
+                                                .Where(x => x.AlijansaKojaResava.Naziv == naziv)
+                                                .List<GrupniZadaci>();
+
+                if (lista.Count > 0)
+                {
+                    foreach (GrupniZadaci gz in lista)
+                    {
+                        DTOs.ZadatakBasic z = new DTOs.ZadatakBasic();
+                        
+                        z.BonusIskustva = gz.ZadatakKojiSeResava.BonusIskustva;
+                        z.Id = gz.ZadatakKojiSeResava.Id;
+
+                        DTOs.GrupniZadaciBasic gzb = new DTOs.GrupniZadaciBasic();
+                        gzb.Id = gz.Id;
+                        gzb.ZadatakKojiSeResava = z;
+                        gzb.VremeResavanja = gz.VremeResavanja;
+                        
+                        listaGrupnihZadataka.Add(gzb);
+                    }
+                }
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            return listaGrupnihZadataka;
+        }
+
+        public static void ResiGrupniZadatak(int idGrupnogZadatka)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                GrupniZadaci gz = s.Get<GrupniZadaci>(idGrupnogZadatka);
+
+
+
+                foreach (Igrac i in gz.AlijansaKojaResava.Igraci)
+                {
+                    i.KontroliseLika.Iskustvo += gz.ZadatakKojiSeResava.BonusIskustva;
+                    s.Update(i);
+                }
+
+                gz.ZadatakKojiSeResava.Alijanse.Remove(gz);
+                gz.ZadatakKojiSeResava = null;
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
     }
+    #endregion
 }

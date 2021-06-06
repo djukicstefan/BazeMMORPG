@@ -820,7 +820,7 @@ namespace Projekat2Deo_Verzija1
 
             public SegrtIdBasic()
             {
-                
+                Gazda = new LikBasic();
             }
 
             public override string ToString()
