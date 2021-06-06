@@ -63,6 +63,11 @@ namespace Projekat2Deo_Verzija1.Forme
             this.listSegrti = new System.Windows.Forms.ListBox();
             this.btnZaposliZegrta = new System.Windows.Forms.Button();
             this.btnItems = new System.Windows.Forms.Button();
+            this.livIndividualniZadaci = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -444,11 +449,57 @@ namespace Projekat2Deo_Verzija1.Forme
             this.btnItems.Text = "Manage items";
             this.btnItems.UseVisualStyleBackColor = true;
             // 
+            // livIndividualniZadaci
+            // 
+            this.livIndividualniZadaci.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.livIndividualniZadaci.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.livIndividualniZadaci.FullRowSelect = true;
+            this.livIndividualniZadaci.GridLines = true;
+            this.livIndividualniZadaci.HideSelection = false;
+            this.livIndividualniZadaci.Location = new System.Drawing.Point(661, 31);
+            this.livIndividualniZadaci.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.livIndividualniZadaci.MaximumSize = new System.Drawing.Size(468, 212);
+            this.livIndividualniZadaci.Name = "livIndividualniZadaci";
+            this.livIndividualniZadaci.Size = new System.Drawing.Size(468, 212);
+            this.livIndividualniZadaci.TabIndex = 8;
+            this.livIndividualniZadaci.UseCompatibleStateImageBehavior = false;
+            this.livIndividualniZadaci.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.DisplayIndex = 1;
+            this.columnHeader1.Text = "Id Igrača";
+            this.columnHeader1.Width = 68;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.DisplayIndex = 2;
+            this.columnHeader2.Text = "Id Zadatka";
+            this.columnHeader2.Width = 83;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.DisplayIndex = 3;
+            this.columnHeader3.Text = "Vreme rešavanja";
+            this.columnHeader3.Width = 131;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.DisplayIndex = 0;
+            this.columnHeader4.Text = "Id";
+            // 
             // IgracForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(973, 743);
+            this.ClientSize = new System.Drawing.Size(1160, 743);
+            this.Controls.Add(this.livIndividualniZadaci);
             this.Controls.Add(this.btnItems);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox5);
@@ -506,5 +557,10 @@ namespace Projekat2Deo_Verzija1.Forme
         private System.Windows.Forms.Label lblInventar;
         private System.Windows.Forms.ListBox listInventar;
         private System.Windows.Forms.Button btnItems;
+        private System.Windows.Forms.ListView livIndividualniZadaci;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }

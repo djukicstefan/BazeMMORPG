@@ -317,6 +317,7 @@ namespace Projekat2Deo_Verzija1
             public int VestinaSkrivanja;
             public String TipOruzja;
             public int Mana;
+            public string Rasa;
 
             public virtual IList<SegrtBasic> Segrti { get; set; }
             public virtual IList<OpremaBasic> Oprema { get; set; }
@@ -327,7 +328,7 @@ namespace Projekat2Deo_Verzija1
                 Oprema = new List<OpremaBasic>();
             }
 
-            public LikBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata, int VestinaSkrivanja, String TipOruzja, int Mana)
+            public LikBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata, int VestinaSkrivanja, String TipOruzja, int Mana, string Rasa)
             {
                 this.Id = id;
                 this.Iskustvo = iskustvo;
@@ -337,6 +338,7 @@ namespace Projekat2Deo_Verzija1
                 this.VestinaSkrivanja = VestinaSkrivanja;
                 this.TipOruzja = TipOruzja;
                 this.Mana = Mana;
+                this.Rasa = Rasa;
             }
 
             public override string ToString()
@@ -351,8 +353,8 @@ namespace Projekat2Deo_Verzija1
         {
 
             public ČovekBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata, 
-                int VestinaSkrivanja, String TipOruzja, int Mana)
-                : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata, VestinaSkrivanja, "", 0)
+                int VestinaSkrivanja, String TipOruzja, int Mana, string Rasa)
+                : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata, VestinaSkrivanja, "", 0, Rasa)
             {
                 
             }
@@ -369,8 +371,8 @@ namespace Projekat2Deo_Verzija1
             
 
             public PatuljakBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata,
-                int VestinaSkrivanja, String TipOruzja, int Mana)
-                : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata, 0, TipOruzja, 0)
+                int VestinaSkrivanja, String TipOruzja, int Mana, string Rasa)
+                : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata, 0, TipOruzja, 0, Rasa)
             {
                 
             }
@@ -385,8 +387,8 @@ namespace Projekat2Deo_Verzija1
         {
 
             public OrkBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata,
-                int VestinaSkrivanja, String TipOruzja, int Mana)
-                : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata, 0, TipOruzja, 0)
+                int VestinaSkrivanja, String TipOruzja, int Mana, string Rasa)
+                : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata, 0, TipOruzja, 0, Rasa)
             {
                
             }
@@ -401,8 +403,8 @@ namespace Projekat2Deo_Verzija1
             
 
             public VilenjakBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata,
-                int VestinaSkrivanja, String TipOruzja, int Mana)
-                : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata, 0, "", Mana)
+                int VestinaSkrivanja, String TipOruzja, int Mana, string Rasa)
+                : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata, 0, "", Mana, Rasa)
             {
                 
             }
@@ -416,8 +418,8 @@ namespace Projekat2Deo_Verzija1
         {
          
             public DemonBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata,
-                int VestinaSkrivanja, String TipOruzja, int Mana)
-                : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata, 0, "", Mana)
+                int VestinaSkrivanja, String TipOruzja, int Mana, string Rasa)
+                : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata, 0, "", Mana, Rasa)
             {
                
             }
@@ -522,6 +524,11 @@ namespace Projekat2Deo_Verzija1
                 this.PPredmet = ppredmet;
             }
 
+            public override string ToString()
+            {
+                return $"{this.BrojIskustvenihPoena} {this.Rasa} {this.PPredmet}";
+            }
+
         }
 
         #endregion
@@ -571,6 +578,11 @@ namespace Projekat2Deo_Verzija1
                 this.Naziv = naziv;
                 this.Opis = opis;
                 this.NadimakVlasnika = nadimakVlasnika;
+            }
+
+            public override string ToString()
+            {
+                return $"{this.Naziv} {this.Opis} {this.NadimakVlasnika}";
             }
         }
 
@@ -680,6 +692,11 @@ namespace Projekat2Deo_Verzija1
                 this.IgracKojiResava = igrac;
                 this.ZadatakKojiSeResava = zadatak;
                 this.VremeResavanja = vreme;
+            }
+
+            public override string ToString()
+            {
+                return $"{ZadatakKojiSeResava}, {VremeResavanja}";
             }
         }
 
@@ -859,6 +876,11 @@ namespace Projekat2Deo_Verzija1
             {
                 this.Id = id;
                 this.BonusIskustva = bonus;
+            }
+
+            public override string ToString()
+            {
+                return $"{this.BonusIskustva}";
             }
         }
 

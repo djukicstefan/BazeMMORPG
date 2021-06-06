@@ -13,7 +13,11 @@ namespace Projekat2Deo_Verzija1.Forme
 {
     public partial class IgracForma : Form
     {
-        DTOs.IgracBasic igrac;
+        private DTOs.IgracBasic igrac;
+        private List<DTOs.SegrtBasic> TrenutniSegrti;
+        private List<DTOs.BonusPredmetiIOruzijaBasic> BonusOpremaLika;
+        private List<DTOs.KljucniPredmetiBasic> KljucnaOpremaLika;
+        private List<DTOs.IndividualniZadaciBasic> listaZadataka;
         public IgracForma()
         {
             InitializeComponent();
@@ -23,44 +27,34 @@ namespace Projekat2Deo_Verzija1.Forme
         {
             InitializeComponent();
             igrac = i;
-            UcitajPodatke(igrac);
+            UcitajPodatke();
         }
 
-        private void UcitajPodatke(DTOs.IgracBasic i)
+        private void UcitajPodatke()
         {
-            lblIme.Text = i.Ime;
-            lblPrezime.Text = i.Prezime;
-            lblPol.Text = i.Pol.ToString();
-            lblUzrast.Text = i.Uzrast.ToString();
-            lblNadimakServer.Text = $"{i.Nadimak}@{i.PovezanNaServer.Naziv}";
+            lblIme.Text = igrac.Ime;
+            lblPrezime.Text = igrac.Prezime;
+            lblPol.Text = igrac.Pol.ToString();
+            lblUzrast.Text = igrac.Uzrast.ToString();
+            lblNadimakServer.Text = $"{igrac.Nadimak}@{igrac.PovezanNaServer.Naziv}";
 
 
-            var p = i.KontroliseLika.ToString().Split('.');
-            
-
-            //lblRasa.Text = p[2];
-            lblZlato.Text = i.KontroliseLika.KolicinaZlata.ToString();
-            lblIskustvo.Text = i.KontroliseLika.Iskustvo.ToString();
-            lblZdravlje.Text = i.KontroliseLika.Zdravlje.ToString();
-            lblZamor.Text = i.KontroliseLika.StepenZamora.ToString();
+            lblRasa.Text = igrac.KontroliseLika.Rasa;
+            lblZlato.Text = igrac.KontroliseLika.KolicinaZlata.ToString();
+            lblIskustvo.Text = igrac.KontroliseLika.Iskustvo.ToString();
+            lblZdravlje.Text = igrac.KontroliseLika.Zdravlje.ToString();
+            lblZamor.Text = igrac.KontroliseLika.StepenZamora.ToString();
             if (lblRasa.Text == "Čovek")
-                lblSpecAtr.Text = i.KontroliseLika.VestinaSkrivanja.ToString();
+                lblSpecAtr.Text = igrac.KontroliseLika.VestinaSkrivanja.ToString();
             else if(lblRasa.Text == "Patuljak" || lblRasa.Text == "Ork")
-                lblSpecAtr.Text = i.KontroliseLika.TipOruzja.ToString();
+                lblSpecAtr.Text = igrac.KontroliseLika.TipOruzja.ToString();
             else
-                lblSpecAtr.Text = i.KontroliseLika.Mana.ToString();
+                lblSpecAtr.Text = igrac.KontroliseLika.Mana.ToString();
 
-            if (i.PripadaAlijansi != null)
-                lblAlijansa.Text = i.PripadaAlijansi.Naziv;
+            if (igrac.PripadaAlijansi != null)
+                lblAlijansa.Text = igrac.PripadaAlijansi.Naziv;
 
-            //if(i.KontroliseLika.Segrti.Count > 0)
-            //{
-            //    foreach(DTOs.SegrtBasic s in i.KontroliseLika.Segrti)
-            //    {
-            //        listTrenutniSegrti.Items.Add(s);
-            //    }
-            //}
-            List<DTOs.SegrtBasic> TrenutniSegrti = DTOManager.VratiSegrte(i.KontroliseLika.Id);
+            TrenutniSegrti = DTOManager.VratiSegrte(igrac.KontroliseLika.Id);
             if(TrenutniSegrti.Count > 0)
             {
                 foreach(DTOs.SegrtBasic s in TrenutniSegrti)
@@ -69,20 +63,23 @@ namespace Projekat2Deo_Verzija1.Forme
                 }
             }
 
-            if (i.KontroliseLika.Oprema.Count > 0)
+  
+            BonusOpremaLika = DTOManager.VratiBonusPredmeteIOruzijaLika(igrac.KontroliseLika.Id);
+            KljucnaOpremaLika = DTOManager.VratiKljucnePredmeteLika(igrac.KontroliseLika.Id);
+            if(BonusOpremaLika.Count > 0)
             {
-                foreach (DTOs.OpremaBasic o in i.KontroliseLika.Oprema)
-                {
-                    listInventar.Items.Add(o);
-                }
+                listInventar.Items.AddRange(BonusOpremaLika.ToArray());
+            }
+            if(KljucnaOpremaLika.Count > 0)
+            {
+                listInventar.Items.AddRange(KljucnaOpremaLika.ToArray());
             }
 
-            if (i.IndividualniZadaci.Count > 0)
+
+            listaZadataka = DTOManager.VratiIndividualneZadatkeIgraca(igrac.Id);
+            if(listaZadataka.Count > 0)
             {
-                foreach(DTOs.IndividualniZadaciBasic iz in i.IndividualniZadaci)
-                {
-                    listIndividualniZadaci.Items.Add(iz);
-                }
+                listIndividualniZadaci.Items.AddRange(listaZadataka.ToArray());
             }
 
             List<DTOs.SegrtBasic> segrti = DTOManager.VratiSegrte();
@@ -96,7 +93,20 @@ namespace Projekat2Deo_Verzija1.Forme
             {
                 listAlijanse.Items.Add(a);
             }
-            
+
+
+
+            livIndividualniZadaci.Items.Clear();
+
+            foreach (DTOs.IndividualniZadaciBasic izd in listaZadataka)
+            {
+                //int brojIgraca;
+                //brojIgraca = DTOManager.VratiBrojIgraca(ser.Id);
+                ListViewItem item = new ListViewItem(new string[] { izd.Id.ToString(), izd.IgracKojiResava.Id.ToString(), izd.ZadatakKojiSeResava.Id.ToString(), izd.VremeResavanja.ToString() });
+                livIndividualniZadaci.Items.Add(item);
+                //ukupno += brojIgraca;
+            }
+            //lblUkupanBrojIgraca.Text = ukupno.ToString();
         }
 
         private void IgracForma_Load(object sender, EventArgs e)

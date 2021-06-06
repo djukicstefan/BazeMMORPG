@@ -6,8 +6,7 @@ using System.Text;
 using NHibernate.Linq;
 using Projekat2Deo_Verzija1.Entiteti;
 using System.Windows.Forms;
-
-
+using NHibernate.Hql.Ast.ANTLR.Tree;
 
 namespace Projekat2Deo_Verzija1
 {
@@ -274,7 +273,8 @@ namespace Projekat2Deo_Verzija1
 
                 foreach(Segrt ss in segrti)
                 {
-                    listaSegrta.Add(new DTOs.SegrtBasic(new DTOs.SegrtIdBasic(new DTOs.LikBasic(ss.Id.Gazda.Id, ss.Id.Gazda.Iskustvo, ss.Id.Gazda.StepenZamora, ss.Id.Gazda.Zdravlje, ss.Id.Gazda.KolicinaZlata, ss.Id.Gazda.VestinaSkrivanja, ss.Id.Gazda.TipOruzja, ss.Id.Gazda.Mana), ss.Id.Ime), ss.Rasa, ss.BonusUSkrivanju));
+                    var p = ss.Id.Gazda.ToString().Split('.');
+                    listaSegrta.Add(new DTOs.SegrtBasic(new DTOs.SegrtIdBasic(new DTOs.LikBasic(ss.Id.Gazda.Id, ss.Id.Gazda.Iskustvo, ss.Id.Gazda.StepenZamora, ss.Id.Gazda.Zdravlje, ss.Id.Gazda.KolicinaZlata, ss.Id.Gazda.VestinaSkrivanja, ss.Id.Gazda.TipOruzja, ss.Id.Gazda.Mana, p[2]), ss.Id.Ime), ss.Rasa, ss.BonusUSkrivanju));
                 }
 
                 s.Close();
@@ -298,8 +298,12 @@ namespace Projekat2Deo_Verzija1
 
                 foreach (Segrt ss in segrti)
                 {
-                    if(ss.Id.Gazda.Id == idLika)
-                        listaSegrta.Add(new DTOs.SegrtBasic(new DTOs.SegrtIdBasic(new DTOs.LikBasic(ss.Id.Gazda.Id, ss.Id.Gazda.Iskustvo, ss.Id.Gazda.StepenZamora, ss.Id.Gazda.Zdravlje, ss.Id.Gazda.KolicinaZlata, ss.Id.Gazda.VestinaSkrivanja, ss.Id.Gazda.TipOruzja, ss.Id.Gazda.Mana), ss.Id.Ime), ss.Rasa, ss.BonusUSkrivanju));
+                    if (ss.Id.Gazda.Id == idLika)
+                    {
+                        var p = ss.Id.Gazda.ToString().Split('.');
+                        listaSegrta.Add(new DTOs.SegrtBasic(new DTOs.SegrtIdBasic(new DTOs.LikBasic(ss.Id.Gazda.Id, ss.Id.Gazda.Iskustvo, ss.Id.Gazda.StepenZamora, ss.Id.Gazda.Zdravlje, ss.Id.Gazda.KolicinaZlata, ss.Id.Gazda.VestinaSkrivanja, ss.Id.Gazda.TipOruzja, ss.Id.Gazda.Mana, p[2]), ss.Id.Ime), ss.Rasa, ss.BonusUSkrivanju));
+                    } 
+                        
                 }
 
                 s.Close();
@@ -360,13 +364,15 @@ namespace Projekat2Deo_Verzija1
                 ISession s = DataLayer.GetSession();
 
                 Lik l = s.Get<Lik>(id);
+                var p = l.GetType().ToString().Split('.');
+
 
                 lik.Id = l.Id;
                 lik.Iskustvo = l.Iskustvo;
                 lik.StepenZamora = l.StepenZamora;
                 lik.Zdravlje = l.Zdravlje;
                 lik.KolicinaZlata = l.KolicinaZlata;
-
+                lik.Rasa = p[2];
                 s.Close();
             }
             catch(Exception ec)
@@ -385,9 +391,12 @@ namespace Projekat2Deo_Verzija1
                 IList<Lik> likovi = s.QueryOver<Lik>()
                                             .List<Lik>();
 
+                
+
                 foreach (Lik l in likovi)
                 {
-                    listaLikova.Add(new DTOs.LikBasic(l.Id, l.Iskustvo, l.StepenZamora, l.Zdravlje, l.KolicinaZlata, l.VestinaSkrivanja, l.TipOruzja, l.Mana));
+                    var p = l.GetType().ToString().Split('.');
+                    listaLikova.Add(new DTOs.LikBasic(l.Id, l.Iskustvo, l.StepenZamora, l.Zdravlje, l.KolicinaZlata, l.VestinaSkrivanja, l.TipOruzja, l.Mana, p[2]));
                 }
 
                 s.Close();
@@ -401,10 +410,107 @@ namespace Projekat2Deo_Verzija1
 
         #endregion
 
-        #region Oprema
-        public static List<DTOs.OpremaBasic> VratiOpremuLika(int id)
+        #region KljucniPredmeti
+        public static List<DTOs.KljucniPredmetiBasic> VratiKljucnePredmeteLika(int idLika)
         {
+            List<DTOs.KljucniPredmetiBasic> listaOprema = new List<DTOs.KljucniPredmetiBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
 
+                Lik l = s.Get<Lik>(idLika);
+               
+                if (l.Oprema.Count > 0)
+                {
+                    foreach(Oprema o in l.Oprema)
+                    {
+                        KljucniPredmeti kp = s.Get<KljucniPredmeti>(o.Id);
+                        if(kp != null)
+                        {
+                            listaOprema.Add(new DTOs.KljucniPredmetiBasic(kp.Naziv, kp.Opis, kp.NadimakVlasnika));
+                        }
+                    }  
+                }
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            return listaOprema;
+        }
+        #endregion
+
+        #region BonusPredmetiIOruzija
+        public static List<DTOs.BonusPredmetiIOruzijaBasic> VratiBonusPredmeteIOruzijaLika(int idLika)
+        {
+            List<DTOs.BonusPredmetiIOruzijaBasic> listaOprema = new List<DTOs.BonusPredmetiIOruzijaBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Lik l = s.Get<Lik>(idLika);
+
+                if (l.Oprema.Count > 0)
+                {
+                    foreach (Oprema o in l.Oprema)
+                    {
+                        BonusPredmetiIOruzija bp = s.Get<BonusPredmetiIOruzija>(o.Id);
+                        if (bp != null)
+                        {
+                            listaOprema.Add(new DTOs.BonusPredmetiIOruzijaBasic(bp.BrojIskustvenihPoena, bp.Rasa, bp.PPredmet));
+                        }
+                    }
+                }
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            return listaOprema;
+        }
+        #endregion
+
+        #region IndividualniZadaci
+        public static List<DTOs.IndividualniZadaciBasic> VratiIndividualneZadatkeIgraca(int idIgraca)
+        {
+            List<DTOs.IndividualniZadaciBasic> listaIndividualnihZadataka = new List<DTOs.IndividualniZadaciBasic>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IList<IndividualniZadaci> lista = s.QueryOver<IndividualniZadaci>()
+                                                .Where(x => x.IgracKojiResava.Id == idIgraca)
+                                                .List<IndividualniZadaci>();
+
+                if(lista.Count > 0)
+                {
+                    foreach(IndividualniZadaci iz in lista)
+                    {
+                        DTOs.ZadatakBasic z = new DTOs.ZadatakBasic();
+                        DTOs.IgracBasic i = new DTOs.IgracBasic();
+                        z.BonusIskustva = iz.ZadatakKojiSeResava.BonusIskustva;
+                        z.Id = iz.ZadatakKojiSeResava.Id;
+                        i.Id = iz.IgracKojiResava.Id;
+                        DTOs.IndividualniZadaciBasic izb = new DTOs.IndividualniZadaciBasic();
+                        izb.Id = iz.Id;
+                        izb.ZadatakKojiSeResava = z;
+                        izb.IgracKojiResava = i;
+                        izb.VremeResavanja = iz.VremeResavanja;
+                        listaIndividualnihZadataka.Add(izb);
+                    }
+                }
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            return listaIndividualnihZadataka;
         }
         #endregion
     }
