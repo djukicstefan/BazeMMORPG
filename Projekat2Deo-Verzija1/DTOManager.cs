@@ -6,7 +6,8 @@ using System.Text;
 using NHibernate.Linq;
 using Projekat2Deo_Verzija1.Entiteti;
 using System.Windows.Forms;
-using System.Security.Cryptography;
+
+
 
 namespace Projekat2Deo_Verzija1
 {
@@ -35,6 +36,31 @@ namespace Projekat2Deo_Verzija1
             }
             return listaAlijansi;
         }
+
+        public static DTOs.AlijansaBasic VratiAlijansu(string naziv)
+        {
+            DTOs.AlijansaBasic alijansa = new DTOs.AlijansaBasic();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Alijansa a = s.Get<Alijansa>(naziv);
+
+                alijansa.Naziv = a.Naziv;
+                alijansa.MaxIgraca = a.MaxIgraca;
+                alijansa.MinIgraca = a.MinIgraca;
+                alijansa.BonusIskustvo = a.BonusIskustvo;
+                alijansa.BonusZdravlje = a.BonusZdravlje;
+
+                s.Close();
+            }
+            catch(Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            return alijansa;
+        }
+
         #endregion
 
         #region Server
@@ -95,6 +121,27 @@ namespace Projekat2Deo_Verzija1
             return brojIgraca;
         }
 
+        public static DTOs.ServerBasic VratiServer(int id)
+        {
+            DTOs.ServerBasic server = new DTOs.ServerBasic();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Server ss = s.Get<Server>(id);
+
+                server.Id = ss.Id;
+                server.Naziv = ss.Naziv;
+
+                s.Close();
+                
+            }
+            catch(Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            return server;
+        }
 
 
         #endregion
@@ -170,8 +217,9 @@ namespace Projekat2Deo_Verzija1
             }
         }
 
-        public static Igrac PostojiIgrac(string nadimak, string lozinka)
+        public static DTOs.IgracBasic PostojiIgrac(string nadimak, string lozinka)
         {
+            DTOs.IgracBasic igracc = new DTOs.IgracBasic();
             try
             {
                 ISession s = DataLayer.GetSession();
@@ -184,7 +232,20 @@ namespace Projekat2Deo_Verzija1
 
                 if (igrac != null)
                 {
-                    return igrac[0];
+                    igracc.Id = igrac[0].Id;
+                    igracc.Nadimak = igrac[0].Nadimak;
+                    igracc.Lozinka = igrac[0].Lozinka;
+                    igracc.Ime = igrac[0].Ime;
+                    igracc.Prezime = igrac[0].Prezime;
+                    igracc.Pol = igrac[0].Pol;
+                    igracc.Uzrast = igrac[0].Uzrast;
+                    igracc.VremePovezivanja = igrac[0].VremePovezivanja;
+                    igracc.VremeOdjavljivanja = igrac[0].VremeOdjavljivanja;
+                    igracc.BrojPoenaUSesiji = igrac[0].BrojPoenaUSesiji;
+                    igracc.KolicinaZlataUSesiji = igrac[0].KolicinaZlataUSesiji;
+                    igracc.PovezanNaServer = VratiServer(igrac[0].PovezanNaServer.Id);
+                    igracc.PripadaAlijansi = VratiAlijansu(igrac[0].PripadaAlijansi.Naziv);
+                    igracc.KontroliseLika = VratiLika(igrac[0].KontroliseLika.Id);
                 }
                 
             }
@@ -192,8 +253,10 @@ namespace Projekat2Deo_Verzija1
             {
                 MessageBox.Show(ec.Message);
             }
-            return null;
+            return igracc;
         }
+
+        
 
         #endregion
 
@@ -211,7 +274,7 @@ namespace Projekat2Deo_Verzija1
 
                 foreach(Segrt ss in segrti)
                 {
-                    listaSegrta.Add(new DTOs.SegrtBasic(new DTOs.SegrtIdBasic(new DTOs.LikBasic(ss.Id.Gazda.Id, ss.Id.Gazda.Iskustvo, ss.Id.Gazda.StepenZamora, ss.Id.Gazda.Zdravlje, ss.Id.Gazda.KolicinaZlata), ss.Id.Ime), ss.Rasa, ss.BonusUSkrivanju));
+                    listaSegrta.Add(new DTOs.SegrtBasic(new DTOs.SegrtIdBasic(new DTOs.LikBasic(ss.Id.Gazda.Id, ss.Id.Gazda.Iskustvo, ss.Id.Gazda.StepenZamora, ss.Id.Gazda.Zdravlje, ss.Id.Gazda.KolicinaZlata, ss.Id.Gazda.VestinaSkrivanja, ss.Id.Gazda.TipOruzja, ss.Id.Gazda.Mana), ss.Id.Ime), ss.Rasa, ss.BonusUSkrivanju));
                 }
 
                 s.Close();
@@ -258,6 +321,34 @@ namespace Projekat2Deo_Verzija1
                 MessageBox.Show(ec.Message);
             }
             return null;
+        }
+
+        #endregion
+
+        #region Lik
+
+        public static DTOs.LikBasic VratiLika(int id)
+        {
+            DTOs.LikBasic lik = new DTOs.LikBasic();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Lik l = s.Get<Lik>(id);
+
+                lik.Id = l.Id;
+                lik.Iskustvo = l.Iskustvo;
+                lik.StepenZamora = l.StepenZamora;
+                lik.Zdravlje = l.Zdravlje;
+                lik.KolicinaZlata = l.KolicinaZlata;
+
+                s.Close();
+            }
+            catch(Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            return lik;
         }
 
         #endregion

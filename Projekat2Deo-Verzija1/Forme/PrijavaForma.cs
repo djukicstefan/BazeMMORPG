@@ -25,7 +25,7 @@ namespace Projekat2Deo_Verzija1.Forme
 
         private void btnPotvrdi_Click(object sender, EventArgs e)
         {
-            Igrac igrac = DTOManager.PostojiIgrac(txtNadimak.Text, txtLozinka.Text); 
+            DTOs.IgracBasic igrac = DTOManager.PostojiIgrac(txtNadimak.Text, txtLozinka.Text); 
             if(igrac != null)
             {
                 //MessageBox.Show($"Dobrodosli nazad!");

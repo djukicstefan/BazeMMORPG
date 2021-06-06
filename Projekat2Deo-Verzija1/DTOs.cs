@@ -314,21 +314,29 @@ namespace Projekat2Deo_Verzija1
             public int StepenZamora;
             public int Zdravlje;
             public int KolicinaZlata;
+            public int VestinaSkrivanja;
+            public String TipOruzja;
+            public int Mana;
 
             public virtual IList<SegrtBasic> Segrti { get; set; }
+            public virtual IList<OpremaBasic> Oprema { get; set; }
 
             public LikBasic()
             {
                 Segrti = new List<SegrtBasic>();
+                Oprema = new List<OpremaBasic>();
             }
 
-            public LikBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata)
+            public LikBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata, int VestinaSkrivanja, String TipOruzja, int Mana)
             {
                 this.Id = id;
                 this.Iskustvo = iskustvo;
                 this.StepenZamora = stepenZamora;
                 this.Zdravlje = zdravlje;
                 this.KolicinaZlata = kolicinaZlata;
+                this.VestinaSkrivanja = VestinaSkrivanja;
+                this.TipOruzja = TipOruzja;
+                this.Mana = Mana;
             }
 
             public override string ToString()
@@ -336,87 +344,86 @@ namespace Projekat2Deo_Verzija1
                 return $"{Id}  {Iskustvo}  {StepenZamora}  {Zdravlje}  {KolicinaZlata}";
             }
 
-            public class ČoverBasic : LikBasic
+            
+        }
+
+        public class ČovekBasic : LikBasic
+        {
+
+            public ČovekBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata, 
+                int VestinaSkrivanja, String TipOruzja, int Mana)
+                : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata, VestinaSkrivanja, "", 0)
             {
-                public int VestinaSkrivanja;
-
-                public ČoverBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata,
-                    int vestinaSkrivanja)
-                    : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata)
-                {
-                    this.VestinaSkrivanja = vestinaSkrivanja;
-                }
-
-                public override string ToString()
-                 
-                {
-                    return $" {VestinaSkrivanja}";
-                }
+                
             }
 
-            public class PatuljakBasic : LikBasic
+            public override string ToString()
+
             {
-                public String TipOruzja;
+                return $" {VestinaSkrivanja}";
+            }
+        }
 
-                public PatuljakBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata,
-                    String tipOruzja)
-                    : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata)
-                {
-                    this.TipOruzja = tipOruzja;
-                }
+        public class PatuljakBasic : LikBasic
+        {
+            
 
-                public override string ToString()
-                {
-                    return $" {TipOruzja}";
-                }
+            public PatuljakBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata,
+                int VestinaSkrivanja, String TipOruzja, int Mana)
+                : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata, 0, TipOruzja, 0)
+            {
+                
             }
 
-            public class OrkBasic : LikBasic
+            public override string ToString()
             {
-                public String TipOruzja;
-
-                public OrkBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata,
-                    String tipOruzja)
-                    : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata)
-                {
-                    this.TipOruzja = tipOruzja;
-                }
-                public override string ToString()
-                {
-                    return $" {TipOruzja}";
-                }
+                return $" {TipOruzja}";
             }
+        }
 
-            public class VilenjakBasic : LikBasic
+        public class OrkBasic : LikBasic
+        {
+
+            public OrkBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata,
+                int VestinaSkrivanja, String TipOruzja, int Mana)
+                : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata, 0, TipOruzja, 0)
             {
-                public int Mana;
-
-                public VilenjakBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata,
-                    int mana)
-                    : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata)
-                {
-                    this.Mana = mana;
-                }
-                public override string ToString()
-                {
-                    return $" {Mana}";
-                }
+               
             }
-
-            public class DemonBasic : LikBasic
+            public override string ToString()
             {
-                public int Mana;
+                return $" {TipOruzja}";
+            }
+        }
 
-                public DemonBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata,
-                    int mana)
-                    : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata)
-                {
-                    this.Mana = mana;
-                }
-                public override string ToString()
-                {
-                    return $" {Mana}";
-                }
+        public class VilenjakBasic : LikBasic
+        {
+            
+
+            public VilenjakBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata,
+                int VestinaSkrivanja, String TipOruzja, int Mana)
+                : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata, 0, "", Mana)
+            {
+                
+            }
+            public override string ToString()
+            {
+                return $" {Mana}";
+            }
+        }
+
+        public class DemonBasic : LikBasic
+        {
+         
+            public DemonBasic(int id, int iskustvo, int stepenZamora, int zdravlje, int kolicinaZlata,
+                int VestinaSkrivanja, String TipOruzja, int Mana)
+                : base(id, iskustvo, stepenZamora, zdravlje, kolicinaZlata, 0, "", Mana)
+            {
+               
+            }
+            public override string ToString()
+            {
+                return $" {Mana}";
             }
         }
 
@@ -859,5 +866,6 @@ namespace Projekat2Deo_Verzija1
 
         #endregion
 
+       
     }
 }

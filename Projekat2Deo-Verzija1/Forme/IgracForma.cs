@@ -13,20 +13,20 @@ namespace Projekat2Deo_Verzija1.Forme
 {
     public partial class IgracForma : Form
     {
-        Igrac igrac { get; set; }
+        DTOs.IgracBasic igrac;
         public IgracForma()
         {
             InitializeComponent();
         }
 
-        public IgracForma(Igrac i)
+        public IgracForma(DTOs.IgracBasic i)
         {
             InitializeComponent();
             igrac = i;
             UcitajPodatke(i);
         }
 
-        private void UcitajPodatke(Igrac i)
+        private void UcitajPodatke(DTOs.IgracBasic i)
         {
             lblIme.Text = i.Ime;
             lblPrezime.Text = i.Prezime;
@@ -55,23 +55,23 @@ namespace Projekat2Deo_Verzija1.Forme
 
             if(i.KontroliseLika.Segrti.Count > 0)
             {
-                foreach(Segrt s in i.KontroliseLika.Segrti)
+                foreach(DTOs.SegrtBasic s in i.KontroliseLika.Segrti)
                 {
                     listTrenutniSegrti.Items.Add(s);
                 }
             }
 
-            if(i.KontroliseLika.Oprema.Count > 0)
+            if (i.KontroliseLika.Oprema.Count > 0)
             {
-                foreach(Oprema o in i.KontroliseLika.Oprema)
+                foreach (DTOs.OpremaBasic o in i.KontroliseLika.Oprema)
                 {
                     listInventar.Items.Add(o);
                 }
             }
 
-            if(i.IndividualniZadaci.Count > 0)
+            if (i.IndividualniZadaci.Count > 0)
             {
-                foreach(IndividualniZadaci iz in i.IndividualniZadaci)
+                foreach(DTOs.IndividualniZadaciBasic iz in i.IndividualniZadaci)
                 {
                     listIndividualniZadaci.Items.Add(iz);
                 }
@@ -98,14 +98,14 @@ namespace Projekat2Deo_Verzija1.Forme
 
         private void btnOtpustiSegrta_Click(object sender, EventArgs e)
         {
-            if (listTrenutniSegrti.Items.Count > 0)
-            {
-                var curIndex = listTrenutniSegrti.SelectedIndex;
-                Segrt selektovaniSegrt = (Segrt)listTrenutniSegrti.Items[curIndex];
-                Lik lik = DTOManager.OtpustiSegrta(selektovaniSegrt.Id);
-                igrac.KontroliseLika = lik;
-                UcitajPodatke(igrac);
-            }
+            //if (listTrenutniSegrti.Items.Count > 0)
+            //{
+            //    var curIndex = listTrenutniSegrti.SelectedIndex;
+            //    Segrt selektovaniSegrt = (Segrt)listTrenutniSegrti.Items[curIndex];
+            //    Lik lik = DTOManager.OtpustiSegrta(selektovaniSegrt.Id);
+            //    igrac.KontroliseLika = lik;
+            //    UcitajPodatke(igrac);
+            //}
             
         }
     }
