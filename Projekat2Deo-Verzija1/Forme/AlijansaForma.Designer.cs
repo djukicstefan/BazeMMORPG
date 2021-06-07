@@ -54,9 +54,9 @@ namespace Projekat2Deo_Verzija1.Forme
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnDodajZadatak = new System.Windows.Forms.Button();
             this.btnResiZadatak = new System.Windows.Forms.Button();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numBonusZdravlje)).BeginInit();
@@ -325,6 +325,11 @@ namespace Projekat2Deo_Verzija1.Forme
             this.columnHeader3.Text = "Vreme rešavanja";
             this.columnHeader3.Width = 102;
             // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Bonus iskustvo";
+            this.columnHeader5.Width = 90;
+            // 
             // btnDodajZadatak
             // 
             this.btnDodajZadatak.Location = new System.Drawing.Point(440, 48);
@@ -333,6 +338,7 @@ namespace Projekat2Deo_Verzija1.Forme
             this.btnDodajZadatak.TabIndex = 12;
             this.btnDodajZadatak.Text = "Dodaj";
             this.btnDodajZadatak.UseVisualStyleBackColor = true;
+            this.btnDodajZadatak.Click += new System.EventHandler(this.btnDodajZadatak_Click);
             // 
             // btnResiZadatak
             // 
@@ -343,11 +349,6 @@ namespace Projekat2Deo_Verzija1.Forme
             this.btnResiZadatak.Text = "Resi";
             this.btnResiZadatak.UseVisualStyleBackColor = true;
             this.btnResiZadatak.Click += new System.EventHandler(this.btnResiZadatak_Click);
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Bonus iskustvo";
-            this.columnHeader5.Width = 90;
             // 
             // AlijansaForma
             // 

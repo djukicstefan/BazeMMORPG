@@ -21,7 +21,8 @@ namespace Projekat2Deo_Verzija1.Mapiranja
             HasManyToMany(o => o.Likovi)
                 .Table("VLASNIŠTVO_OPREME")
                 .ParentKeyColumn("ID_Opreme")
-                .ChildKeyColumn("ID_Lika"); 
+                .ChildKeyColumn("ID_Lika");
+            
         }
     }
 }

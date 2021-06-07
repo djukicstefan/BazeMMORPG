@@ -13,9 +13,12 @@ namespace Projekat2Deo_Verzija1.Forme
 {
     public partial class PrijavaForma : Form
     {
-        public PrijavaForma()
+        private frmPocetnaStranica parent;
+
+        public PrijavaForma(frmPocetnaStranica parent)
         {
             InitializeComponent();
+            this.parent = parent;
         }
 
         private void btnOdustani_Click(object sender, EventArgs e)
@@ -29,9 +32,10 @@ namespace Projekat2Deo_Verzija1.Forme
             if(igrac != null)
             {
                 //MessageBox.Show($"Dobrodosli nazad!");
-                this.Close();
                 IgracForma igf = new IgracForma(igrac);
                 igf.ShowDialog();
+                Close();
+                parent.Close();
             }
             else
             {

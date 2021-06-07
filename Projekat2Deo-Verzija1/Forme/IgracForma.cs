@@ -91,7 +91,7 @@ namespace Projekat2Deo_Verzija1.Forme
                     ListViewItem item = new ListViewItem(new string[] {
                         ko.Naziv,
                         ko.Opis,
-                        ko.NadimakVlasnika
+                        igrac.Nadimak
                     });
 
                     livKljucnaOprema.Items.Add(item);

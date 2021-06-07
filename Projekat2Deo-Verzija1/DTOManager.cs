@@ -169,10 +169,13 @@ namespace Projekat2Deo_Verzija1
                 }
 
                 foreach (GrupniZadaci gz in a.GrupniZadaci)
+                {
+                    Zadatak z = s.Get<Zadatak>(gz.Id);
                     s.Delete(gz);
+                    s.Delete(z);
+                }
 
                 s.Delete(a);
-
                 s.Flush();
 
                 s.Close();
@@ -727,6 +730,51 @@ namespace Projekat2Deo_Verzija1
         }
         #endregion
 
+        #region Zadatak
+        public static List<int> VratiZadatke()
+        {
+            List<int> zadIds = new List<int>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IList<Zadatak> zadaci = s.QueryOver<Zadatak>().List<Zadatak>();
+
+                zadaci.ToList().ForEach(x => { 
+                    if (x.Alijanse.Count == 0 && x.Igraci.Count == 0)
+                        zadIds.Add(x.Id);
+                });
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            return zadIds;
+        }
+
+        public static void NapraviZadatak(int bonusIskustva)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zadatak z = new Zadatak();
+                z.BonusIskustva = bonusIskustva;
+
+                s.Save(z);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+        #endregion
+
         #region IndividualniZadaci
         public static List<DTOs.IndividualniZadaciBasic> VratiIndividualneZadatkeIgraca(int idIgraca)
         {
@@ -815,16 +863,61 @@ namespace Projekat2Deo_Verzija1
 
                 GrupniZadaci gz = s.Get<GrupniZadaci>(idGrupnogZadatka);
 
-
+                Zadatak z = s.Get<Zadatak>(gz.ZadatakKojiSeResava.Id);
 
                 foreach (Igrac i in gz.AlijansaKojaResava.Igraci)
                 {
                     i.KontroliseLika.Iskustvo += gz.ZadatakKojiSeResava.BonusIskustva;
-                    s.Update(i);
+                    s.Update(i.KontroliseLika);
                 }
+                z.Oprema.Clear();
+                z.Alijanse.Clear();
 
-                gz.ZadatakKojiSeResava.Alijanse.Remove(gz);
+                IList<Oprema> oprema = s.QueryOver<Oprema>()
+                                        .Where(x => x.Zadatak.Id == z.Id)
+                                        .List<Oprema>();
+
+                oprema.ToList().ForEach(x => { 
+                    x.Zadatak = null;
+                    s.Update(x);
+                });
+
                 gz.ZadatakKojiSeResava = null;
+                gz.AlijansaKojaResava = null;
+                
+                s.Delete(z);  
+                s.Delete(gz);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        public static void DodajGrupniZadatak(string nazivAlijanse, string vremeResavanja, int zadId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zadatak z = s.Get<Zadatak>(zadId);
+                Alijansa a = s.Get<Alijansa>(nazivAlijanse);
+
+                GrupniZadaci gz = new GrupniZadaci();
+                gz.ZadatakKojiSeResava = z;
+                gz.AlijansaKojaResava = a;
+                gz.VremeResavanja = vremeResavanja;
+
+                a.GrupniZadaci.Add(gz);
+                z.Alijanse.Add(gz);
+
+                s.Update(a);
+                s.Update(z);
+                s.Save(gz);
+                s.Flush();
 
                 s.Close();
             }
@@ -836,3 +929,4 @@ namespace Projekat2Deo_Verzija1
     }
     #endregion
 }
+

@@ -20,6 +20,7 @@ namespace Projekat2Deo_Verzija1.Mapiranja
 
             HasMany(z => z.Alijanse).KeyColumn("ID_Zadatka").LazyLoad().Cascade.All().Inverse();
             HasMany(z => z.Igraci).KeyColumn("ID_Zadatka").LazyLoad().Cascade.All().Inverse();
+            HasMany(z => z.Oprema).KeyColumn("ID_Zadatka").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

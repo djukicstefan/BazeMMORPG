@@ -44,7 +44,7 @@ namespace Projekat2Deo_Verzija1
 
         private void btnPrijava_Click(object sender, EventArgs e)
         {
-            PrijavaForma form = new PrijavaForma();
+            PrijavaForma form = new PrijavaForma(this);
             form.ShowDialog();
         }
 

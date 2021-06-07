@@ -114,8 +114,15 @@ namespace Projekat2Deo_Verzija1.Forme
 
         private void btnResiZadatak_Click(object sender, EventArgs e)
         {
-            DTOManager.ResiGrupniZadatak(int.Parse(livGrupniZadatak.SelectedItems[0].SubItems[0]));
+            DTOManager.ResiGrupniZadatak(int.Parse(livGrupniZadatak.SelectedItems[0].SubItems[0].Text));
             UcitajZadatke();
+            parent.UcitajInventar();
+            parent.UcitajIgraca();
+        }
+
+        private void btnDodajZadatak_Click(object sender, EventArgs e)
+        {
+            (new ZadatakForma(this, naziv)).ShowDialog();
         }
     }
 }
