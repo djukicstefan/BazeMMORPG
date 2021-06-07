@@ -441,17 +441,15 @@ namespace Projekat2Deo_Verzija1
         public class OpremaPregled
         {
             public int Id;
-            public ZadatakBasic Zadatak;
 
             public OpremaPregled()
             {
 
             }
 
-            public OpremaPregled(int id, ZadatakBasic zadatak)
+            public OpremaPregled(int id)
             {
                 this.Id = id;
-                this.Zadatak = zadatak;
             }
         }
 
@@ -495,7 +493,8 @@ namespace Projekat2Deo_Verzija1
 
             }
 
-            public BonusPredmetiIOruzijaPregled(int brojIskustvenihPoena, String rasa, Char ppredmet)
+            public BonusPredmetiIOruzijaPregled(int id, int brojIskustvenihPoena, String rasa, Char ppredmet)
+                :base(id)
             {
                 this.BrojIskustvenihPoena = brojIskustvenihPoena;
                 this.Rasa = rasa;
@@ -551,7 +550,8 @@ namespace Projekat2Deo_Verzija1
 
             }
 
-            public KljucniPredmetiPregled(String naziv, String opis, String nadimakVlasnika)
+            public KljucniPredmetiPregled(int id, String naziv, String opis, String nadimakVlasnika)
+                :base(id)
             {
                 this.Naziv = naziv;
                 this.Opis = opis;

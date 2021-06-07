@@ -186,6 +186,35 @@ namespace Projekat2Deo_Verzija1
             }
         }
 
+        public static void DodajAlijansu(DTOs.AlijansaPregled alijansa, int idIgraca)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Alijansa a = new Alijansa();
+                a.Naziv = alijansa.Naziv;
+                a.MaxIgraca = alijansa.MaxIgraca;
+                a.MinIgraca = alijansa.MinIgraca;
+                a.BonusIskustvo = alijansa.BonusIskustvo;
+                a.BonusZdravlje = alijansa.BonusZdravlje;
+
+                Igrac i = s.Get<Igrac>(idIgraca);
+
+                i.PripadaAlijansi = a;
+                a.Igraci.Add(i);
+
+                s.Save(a);
+                s.Update(i);
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
         #endregion
 
         #region SavezAlijansi
@@ -370,7 +399,25 @@ namespace Projekat2Deo_Verzija1
             return server;
         }
 
+        public static void DodajServer(string naziv)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
 
+                Server srv = new Server();
+                srv.Naziv = naziv;
+
+                s.Save(srv);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
         #endregion
 
         #region Igrac
@@ -457,7 +504,7 @@ namespace Projekat2Deo_Verzija1
                                       .List<Igrac>();
 
 
-                if (igrac != null)
+                if (igrac.Count > 0)
                 {
                     igrac[0].VremePovezivanja = DateTime.Now;
 
@@ -478,6 +525,7 @@ namespace Projekat2Deo_Verzija1
 
                     s.Update(igrac[0]);
                     s.Flush();
+                    return igracc;
                 }
                 
             }
@@ -485,7 +533,7 @@ namespace Projekat2Deo_Verzija1
             {
                 MessageBox.Show(ec.Message);
             }
-            return igracc;
+            return null;
         }
 
         public static void ZavrsiSesiju(DTOs.IgracBasic igrac)
@@ -702,9 +750,9 @@ namespace Projekat2Deo_Verzija1
         #endregion
 
         #region KljucniPredmeti
-        public static List<DTOs.KljucniPredmetiBasic> VratiKljucnePredmeteLika(int idLika)
+        public static List<DTOs.KljucniPredmetiPregled> VratiKljucnePredmeteLika(int idLika)
         {
-            List<DTOs.KljucniPredmetiBasic> listaOprema = new List<DTOs.KljucniPredmetiBasic>();
+            List<DTOs.KljucniPredmetiPregled> listaOprema = new List<DTOs.KljucniPredmetiPregled>();
             try
             {
                 ISession s = DataLayer.GetSession();
@@ -718,7 +766,7 @@ namespace Projekat2Deo_Verzija1
                         KljucniPredmeti kp = s.Get<KljucniPredmeti>(o.Id);
                         if(kp != null)
                         {
-                            listaOprema.Add(new DTOs.KljucniPredmetiBasic(kp.Naziv, kp.Opis, kp.NadimakVlasnika));
+                            listaOprema.Add(new DTOs.KljucniPredmetiPregled(o.Id, kp.Naziv, kp.Opis, kp.NadimakVlasnika));
                         }
                     }  
                 }
@@ -762,12 +810,36 @@ namespace Projekat2Deo_Verzija1
                 MessageBox.Show(ec.Message);
             }
         }
+        public static void OslobodiKljucnuOpremu(int idIgraca, int idOpreme)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Igrac i = s.Get<Igrac>(idIgraca);
+                Oprema o = s.Get<Oprema>(idOpreme);
+
+                i.KontroliseLika.Oprema.Remove(o);
+                o.Likovi.Remove(i.KontroliseLika);
+
+                s.Update(o);
+                s.Update(i);
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
         #endregion
 
         #region BonusPredmetiIOruzija
-        public static List<DTOs.BonusPredmetiIOruzijaBasic> VratiBonusPredmeteIOruzijaLika(int idLika)
+        public static List<DTOs.BonusPredmetiIOruzijaPregled> VratiBonusPredmeteIOruzijaLika(int idLika)
         {
-            List<DTOs.BonusPredmetiIOruzijaBasic> listaOprema = new List<DTOs.BonusPredmetiIOruzijaBasic>();
+            List<DTOs.BonusPredmetiIOruzijaPregled> listaOprema = new List<DTOs.BonusPredmetiIOruzijaPregled>();
             try
             {
                 ISession s = DataLayer.GetSession();
@@ -781,7 +853,7 @@ namespace Projekat2Deo_Verzija1
                         BonusPredmetiIOruzija bp = s.Get<BonusPredmetiIOruzija>(o.Id);
                         if (bp != null)
                         {
-                            listaOprema.Add(new DTOs.BonusPredmetiIOruzijaBasic(bp.BrojIskustvenihPoena, bp.Rasa, bp.PPredmet));
+                            listaOprema.Add(new DTOs.BonusPredmetiIOruzijaPregled(o.Id, bp.BrojIskustvenihPoena, bp.Rasa, bp.PPredmet));
                         }
                     }
                 }
@@ -793,6 +865,30 @@ namespace Projekat2Deo_Verzija1
                 MessageBox.Show(ec.Message);
             }
             return listaOprema;
+        }
+
+        public static void OslobodiBonusOpremu(int idIgraca, int idOpreme)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Igrac i = s.Get<Igrac>(idIgraca);
+                Oprema o = s.Get<Oprema>(idOpreme);
+
+                i.KontroliseLika.Oprema.Remove(o);
+                o.Likovi.Remove(i.KontroliseLika);
+                
+                s.Update(o);
+                s.Update(i);
+                s.Flush();
+                s.Close();
+       
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
         }
         #endregion
 

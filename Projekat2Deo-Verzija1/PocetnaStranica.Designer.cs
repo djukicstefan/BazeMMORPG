@@ -39,6 +39,7 @@
             this.btnRegistracija = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblUkupanBrojIgraca = new System.Windows.Forms.Label();
+            this.btnDodavanjeServera = new System.Windows.Forms.Button();
             this.gpbAktivniServeri.SuspendLayout();
             this.gpbPrijava.SuspendLayout();
             this.SuspendLayout();
@@ -47,21 +48,20 @@
             // 
             this.lblMMORPG.AutoSize = true;
             this.lblMMORPG.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMMORPG.Location = new System.Drawing.Point(249, 21);
-            this.lblMMORPG.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMMORPG.Location = new System.Drawing.Point(332, 26);
             this.lblMMORPG.Name = "lblMMORPG";
-            this.lblMMORPG.Size = new System.Drawing.Size(123, 29);
+            this.lblMMORPG.Size = new System.Drawing.Size(138, 31);
             this.lblMMORPG.TabIndex = 0;
             this.lblMMORPG.Text = "MMORPG";
             // 
             // gpbAktivniServeri
             // 
             this.gpbAktivniServeri.Controls.Add(this.livServeri);
-            this.gpbAktivniServeri.Location = new System.Drawing.Point(268, 96);
-            this.gpbAktivniServeri.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpbAktivniServeri.Location = new System.Drawing.Point(357, 118);
+            this.gpbAktivniServeri.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gpbAktivniServeri.Name = "gpbAktivniServeri";
-            this.gpbAktivniServeri.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gpbAktivniServeri.Size = new System.Drawing.Size(352, 189);
+            this.gpbAktivniServeri.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpbAktivniServeri.Size = new System.Drawing.Size(469, 233);
             this.gpbAktivniServeri.TabIndex = 1;
             this.gpbAktivniServeri.TabStop = false;
             this.gpbAktivniServeri.Text = "Aktivni serveri";
@@ -78,11 +78,11 @@
             this.livServeri.FullRowSelect = true;
             this.livServeri.GridLines = true;
             this.livServeri.HideSelection = false;
-            this.livServeri.Location = new System.Drawing.Point(2, 13);
-            this.livServeri.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.livServeri.MaximumSize = new System.Drawing.Size(352, 173);
+            this.livServeri.Location = new System.Drawing.Point(3, 16);
+            this.livServeri.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.livServeri.MaximumSize = new System.Drawing.Size(468, 212);
             this.livServeri.Name = "livServeri";
-            this.livServeri.Size = new System.Drawing.Size(346, 172);
+            this.livServeri.Size = new System.Drawing.Size(460, 211);
             this.livServeri.TabIndex = 0;
             this.livServeri.UseCompatibleStateImageBehavior = false;
             this.livServeri.View = System.Windows.Forms.View.Details;
@@ -106,21 +106,21 @@
             // 
             this.gpbPrijava.Controls.Add(this.btnPrijava);
             this.gpbPrijava.Controls.Add(this.btnRegistracija);
-            this.gpbPrijava.Location = new System.Drawing.Point(9, 79);
-            this.gpbPrijava.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpbPrijava.Location = new System.Drawing.Point(12, 97);
+            this.gpbPrijava.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gpbPrijava.Name = "gpbPrijava";
-            this.gpbPrijava.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gpbPrijava.Size = new System.Drawing.Size(204, 102);
+            this.gpbPrijava.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gpbPrijava.Size = new System.Drawing.Size(272, 126);
             this.gpbPrijava.TabIndex = 2;
             this.gpbPrijava.TabStop = false;
             this.gpbPrijava.Text = "Prijava";
             // 
             // btnPrijava
             // 
-            this.btnPrijava.Location = new System.Drawing.Point(124, 32);
-            this.btnPrijava.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPrijava.Location = new System.Drawing.Point(165, 39);
+            this.btnPrijava.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPrijava.Name = "btnPrijava";
-            this.btnPrijava.Size = new System.Drawing.Size(75, 36);
+            this.btnPrijava.Size = new System.Drawing.Size(100, 44);
             this.btnPrijava.TabIndex = 4;
             this.btnPrijava.Text = "Prijavi se";
             this.btnPrijava.UseVisualStyleBackColor = true;
@@ -128,10 +128,10 @@
             // 
             // btnRegistracija
             // 
-            this.btnRegistracija.Location = new System.Drawing.Point(4, 32);
-            this.btnRegistracija.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRegistracija.Location = new System.Drawing.Point(5, 39);
+            this.btnRegistracija.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRegistracija.Name = "btnRegistracija";
-            this.btnRegistracija.Size = new System.Drawing.Size(75, 36);
+            this.btnRegistracija.Size = new System.Drawing.Size(100, 44);
             this.btnRegistracija.TabIndex = 3;
             this.btnRegistracija.Text = "Registruj se";
             this.btnRegistracija.UseVisualStyleBackColor = true;
@@ -141,10 +141,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(310, 61);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(413, 75);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 18);
+            this.label1.Size = new System.Drawing.Size(154, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Ukupan broj igrača:";
             // 
@@ -152,24 +151,34 @@
             // 
             this.lblUkupanBrojIgraca.AutoSize = true;
             this.lblUkupanBrojIgraca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUkupanBrojIgraca.Location = new System.Drawing.Point(448, 61);
-            this.lblUkupanBrojIgraca.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUkupanBrojIgraca.Location = new System.Drawing.Point(597, 75);
             this.lblUkupanBrojIgraca.Name = "lblUkupanBrojIgraca";
-            this.lblUkupanBrojIgraca.Size = new System.Drawing.Size(16, 18);
+            this.lblUkupanBrojIgraca.Size = new System.Drawing.Size(18, 20);
             this.lblUkupanBrojIgraca.TabIndex = 4;
             this.lblUkupanBrojIgraca.Text = "0";
             // 
+            // btnDodavanjeServera
+            // 
+            this.btnDodavanjeServera.Location = new System.Drawing.Point(357, 356);
+            this.btnDodavanjeServera.Name = "btnDodavanjeServera";
+            this.btnDodavanjeServera.Size = new System.Drawing.Size(185, 52);
+            this.btnDodavanjeServera.TabIndex = 5;
+            this.btnDodavanjeServera.Text = "Dodaj novi server";
+            this.btnDodavanjeServera.UseVisualStyleBackColor = true;
+            this.btnDodavanjeServera.Click += new System.EventHandler(this.btnDodavanjeServera_Click);
+            // 
             // frmPocetnaStranica
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 366);
+            this.ClientSize = new System.Drawing.Size(844, 450);
+            this.Controls.Add(this.btnDodavanjeServera);
             this.Controls.Add(this.lblUkupanBrojIgraca);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gpbPrijava);
             this.Controls.Add(this.gpbAktivniServeri);
             this.Controls.Add(this.lblMMORPG);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmPocetnaStranica";
             this.Text = "Dobrodošli";
             this.Load += new System.EventHandler(this.frmPocetnaStranica_Load);
@@ -193,5 +202,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblUkupanBrojIgraca;
+        private System.Windows.Forms.Button btnDodavanjeServera;
     }
 }

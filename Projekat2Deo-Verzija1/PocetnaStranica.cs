@@ -1,4 +1,5 @@
-﻿using Projekat2Deo_Verzija1.Forme;
+﻿using Projekat2Deo_Verzija1.Entiteti;
+using Projekat2Deo_Verzija1.Forme;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace Projekat2Deo_Verzija1
             InitializeComponent();
         }
 
-        void UcitajServere()
+        public void UcitajServere()
         {
             int ukupno = 0;
             List<DTOs.ServerBasic> serveri = DTOManager.VratiServere();
@@ -51,6 +52,12 @@ namespace Projekat2Deo_Verzija1
         private void frmPocetnaStranica_Load(object sender, EventArgs e)
         {
             UcitajServere();
+        }
+
+        private void btnDodavanjeServera_Click(object sender, EventArgs e)
+        {
+            ServerForma form = new ServerForma(this);
+            form.ShowDialog();
         }
     }
 }

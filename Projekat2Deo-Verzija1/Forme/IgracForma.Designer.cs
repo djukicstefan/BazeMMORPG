@@ -36,17 +36,20 @@ namespace Projekat2Deo_Verzija1.Forme
             this.lblPrezime = new System.Windows.Forms.Label();
             this.lblIme = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnObrisiOpremu = new System.Windows.Forms.Button();
+            this.btnOslobodiKljucnuOpremu = new System.Windows.Forms.Button();
+            this.btnOslobodiBonusOpremu = new System.Windows.Forms.Button();
             this.btnDodajOpremu = new System.Windows.Forms.Button();
             this.btnUpravljajAlijansom = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnZaposliZegrta = new System.Windows.Forms.Button();
             this.btnNapustiAlijansu = new System.Windows.Forms.Button();
             this.livKljucnaOprema = new System.Windows.Forms.ListView();
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.livBonusOprema = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -82,6 +85,7 @@ namespace Projekat2Deo_Verzija1.Forme
             this.btnDodajZadatak = new System.Windows.Forms.Button();
             this.btnResiZadatak = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnDodajAlijansu = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -95,9 +99,11 @@ namespace Projekat2Deo_Verzija1.Forme
             this.groupBox1.Controls.Add(this.lblPol);
             this.groupBox1.Controls.Add(this.lblPrezime);
             this.groupBox1.Controls.Add(this.lblIme);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(16, 15);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(304, 129);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(405, 159);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informacije o igracu";
@@ -105,51 +111,57 @@ namespace Projekat2Deo_Verzija1.Forme
             // lblNadimakServer
             // 
             this.lblNadimakServer.AutoSize = true;
-            this.lblNadimakServer.Location = new System.Drawing.Point(6, 88);
+            this.lblNadimakServer.Location = new System.Drawing.Point(8, 108);
+            this.lblNadimakServer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNadimakServer.Name = "lblNadimakServer";
-            this.lblNadimakServer.Size = new System.Drawing.Size(104, 15);
+            this.lblNadimakServer.Size = new System.Drawing.Size(119, 17);
             this.lblNadimakServer.TabIndex = 5;
             this.lblNadimakServer.Text = "Nadimak@Server";
             // 
             // lblUzrast
             // 
             this.lblUzrast.AutoSize = true;
-            this.lblUzrast.Location = new System.Drawing.Point(6, 73);
+            this.lblUzrast.Location = new System.Drawing.Point(8, 90);
+            this.lblUzrast.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUzrast.Name = "lblUzrast";
-            this.lblUzrast.Size = new System.Drawing.Size(42, 15);
+            this.lblUzrast.Size = new System.Drawing.Size(49, 17);
             this.lblUzrast.TabIndex = 4;
             this.lblUzrast.Text = "Uzrast";
             // 
             // lblPol
             // 
             this.lblPol.AutoSize = true;
-            this.lblPol.Location = new System.Drawing.Point(6, 58);
+            this.lblPol.Location = new System.Drawing.Point(8, 71);
+            this.lblPol.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPol.Name = "lblPol";
-            this.lblPol.Size = new System.Drawing.Size(25, 15);
+            this.lblPol.Size = new System.Drawing.Size(28, 17);
             this.lblPol.TabIndex = 3;
             this.lblPol.Text = "Pol";
             // 
             // lblPrezime
             // 
             this.lblPrezime.AutoSize = true;
-            this.lblPrezime.Location = new System.Drawing.Point(6, 43);
+            this.lblPrezime.Location = new System.Drawing.Point(8, 53);
+            this.lblPrezime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrezime.Name = "lblPrezime";
-            this.lblPrezime.Size = new System.Drawing.Size(53, 15);
+            this.lblPrezime.Size = new System.Drawing.Size(59, 17);
             this.lblPrezime.TabIndex = 2;
             this.lblPrezime.Text = "Prezime";
             // 
             // lblIme
             // 
             this.lblIme.AutoSize = true;
-            this.lblIme.Location = new System.Drawing.Point(6, 28);
+            this.lblIme.Location = new System.Drawing.Point(8, 34);
+            this.lblIme.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIme.Name = "lblIme";
-            this.lblIme.Size = new System.Drawing.Size(28, 15);
+            this.lblIme.Size = new System.Drawing.Size(30, 17);
             this.lblIme.TabIndex = 1;
             this.lblIme.Text = "Ime";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnObrisiOpremu);
+            this.groupBox2.Controls.Add(this.btnOslobodiKljucnuOpremu);
+            this.groupBox2.Controls.Add(this.btnOslobodiBonusOpremu);
             this.groupBox2.Controls.Add(this.btnDodajOpremu);
             this.groupBox2.Controls.Add(this.btnUpravljajAlijansom);
             this.groupBox2.Controls.Add(this.label1);
@@ -168,27 +180,43 @@ namespace Projekat2Deo_Verzija1.Forme
             this.groupBox2.Controls.Add(this.lblIskustvo);
             this.groupBox2.Controls.Add(this.lblZlato);
             this.groupBox2.Controls.Add(this.lblRasa);
-            this.groupBox2.Location = new System.Drawing.Point(12, 147);
+            this.groupBox2.Location = new System.Drawing.Point(16, 181);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1374, 218);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(1832, 268);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informacije o liku";
             // 
-            // btnObrisiOpremu
+            // btnOslobodiKljucnuOpremu
             // 
-            this.btnObrisiOpremu.Location = new System.Drawing.Point(1208, 161);
-            this.btnObrisiOpremu.Name = "btnObrisiOpremu";
-            this.btnObrisiOpremu.Size = new System.Drawing.Size(153, 23);
-            this.btnObrisiOpremu.TabIndex = 15;
-            this.btnObrisiOpremu.Text = "Obrisi";
-            this.btnObrisiOpremu.UseVisualStyleBackColor = true;
+            this.btnOslobodiKljucnuOpremu.Location = new System.Drawing.Point(1399, 233);
+            this.btnOslobodiKljucnuOpremu.Margin = new System.Windows.Forms.Padding(4);
+            this.btnOslobodiKljucnuOpremu.Name = "btnOslobodiKljucnuOpremu";
+            this.btnOslobodiKljucnuOpremu.Size = new System.Drawing.Size(204, 28);
+            this.btnOslobodiKljucnuOpremu.TabIndex = 16;
+            this.btnOslobodiKljucnuOpremu.Text = "Oslobodi";
+            this.btnOslobodiKljucnuOpremu.UseVisualStyleBackColor = true;
+            this.btnOslobodiKljucnuOpremu.Click += new System.EventHandler(this.btnOslobodiKljucnuOpremu_Click);
+            // 
+            // btnOslobodiBonusOpremu
+            // 
+            this.btnOslobodiBonusOpremu.Location = new System.Drawing.Point(924, 232);
+            this.btnOslobodiBonusOpremu.Margin = new System.Windows.Forms.Padding(4);
+            this.btnOslobodiBonusOpremu.Name = "btnOslobodiBonusOpremu";
+            this.btnOslobodiBonusOpremu.Size = new System.Drawing.Size(204, 28);
+            this.btnOslobodiBonusOpremu.TabIndex = 15;
+            this.btnOslobodiBonusOpremu.Text = "Oslobodi";
+            this.btnOslobodiBonusOpremu.UseVisualStyleBackColor = true;
+            this.btnOslobodiBonusOpremu.Click += new System.EventHandler(this.btnOslobodiBonusOpremu_Click);
             // 
             // btnDodajOpremu
             // 
-            this.btnDodajOpremu.Location = new System.Drawing.Point(1208, 39);
+            this.btnDodajOpremu.Location = new System.Drawing.Point(1611, 48);
+            this.btnDodajOpremu.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodajOpremu.Name = "btnDodajOpremu";
-            this.btnDodajOpremu.Size = new System.Drawing.Size(153, 23);
+            this.btnDodajOpremu.Size = new System.Drawing.Size(204, 28);
             this.btnDodajOpremu.TabIndex = 7;
             this.btnDodajOpremu.Text = "Dodaj";
             this.btnDodajOpremu.UseVisualStyleBackColor = true;
@@ -196,9 +224,10 @@ namespace Projekat2Deo_Verzija1.Forme
             // 
             // btnUpravljajAlijansom
             // 
-            this.btnUpravljajAlijansom.Location = new System.Drawing.Point(9, 166);
+            this.btnUpravljajAlijansom.Location = new System.Drawing.Point(12, 204);
+            this.btnUpravljajAlijansom.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpravljajAlijansom.Name = "btnUpravljajAlijansom";
-            this.btnUpravljajAlijansom.Size = new System.Drawing.Size(110, 23);
+            this.btnUpravljajAlijansom.Size = new System.Drawing.Size(147, 28);
             this.btnUpravljajAlijansom.TabIndex = 13;
             this.btnUpravljajAlijansom.Text = "Upravljaj";
             this.btnUpravljajAlijansom.UseVisualStyleBackColor = true;
@@ -207,17 +236,19 @@ namespace Projekat2Deo_Verzija1.Forme
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(848, 16);
+            this.label1.Location = new System.Drawing.Point(1131, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 15);
+            this.label1.Size = new System.Drawing.Size(106, 17);
             this.label1.TabIndex = 12;
             this.label1.Text = "Ključna oprema";
             // 
             // btnZaposliZegrta
             // 
-            this.btnZaposliZegrta.Location = new System.Drawing.Point(139, 189);
+            this.btnZaposliZegrta.Location = new System.Drawing.Point(185, 233);
+            this.btnZaposliZegrta.Margin = new System.Windows.Forms.Padding(4);
             this.btnZaposliZegrta.Name = "btnZaposliZegrta";
-            this.btnZaposliZegrta.Size = new System.Drawing.Size(111, 23);
+            this.btnZaposliZegrta.Size = new System.Drawing.Size(148, 28);
             this.btnZaposliZegrta.TabIndex = 4;
             this.btnZaposliZegrta.Text = "Zaposli";
             this.btnZaposliZegrta.UseVisualStyleBackColor = true;
@@ -225,9 +256,10 @@ namespace Projekat2Deo_Verzija1.Forme
             // 
             // btnNapustiAlijansu
             // 
-            this.btnNapustiAlijansu.Location = new System.Drawing.Point(9, 189);
+            this.btnNapustiAlijansu.Location = new System.Drawing.Point(12, 233);
+            this.btnNapustiAlijansu.Margin = new System.Windows.Forms.Padding(4);
             this.btnNapustiAlijansu.Name = "btnNapustiAlijansu";
-            this.btnNapustiAlijansu.Size = new System.Drawing.Size(110, 23);
+            this.btnNapustiAlijansu.Size = new System.Drawing.Size(147, 28);
             this.btnNapustiAlijansu.TabIndex = 7;
             this.btnNapustiAlijansu.Text = "Napusti";
             this.btnNapustiAlijansu.UseVisualStyleBackColor = true;
@@ -239,20 +271,25 @@ namespace Projekat2Deo_Verzija1.Forme
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.livKljucnaOprema.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader16,
             this.columnHeader12,
             this.columnHeader13,
             this.columnHeader14});
             this.livKljucnaOprema.FullRowSelect = true;
             this.livKljucnaOprema.GridLines = true;
             this.livKljucnaOprema.HideSelection = false;
-            this.livKljucnaOprema.Location = new System.Drawing.Point(851, 39);
-            this.livKljucnaOprema.Margin = new System.Windows.Forms.Padding(2);
-            this.livKljucnaOprema.MaximumSize = new System.Drawing.Size(352, 173);
+            this.livKljucnaOprema.Location = new System.Drawing.Point(1135, 48);
+            this.livKljucnaOprema.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.livKljucnaOprema.MaximumSize = new System.Drawing.Size(468, 212);
             this.livKljucnaOprema.Name = "livKljucnaOprema";
-            this.livKljucnaOprema.Size = new System.Drawing.Size(352, 145);
+            this.livKljucnaOprema.Size = new System.Drawing.Size(468, 178);
             this.livKljucnaOprema.TabIndex = 11;
             this.livKljucnaOprema.UseCompatibleStateImageBehavior = false;
             this.livKljucnaOprema.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "Id";
             // 
             // columnHeader12
             // 
@@ -275,20 +312,25 @@ namespace Projekat2Deo_Verzija1.Forme
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.livBonusOprema.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
             this.columnHeader9,
             this.columnHeader10,
             this.columnHeader11});
             this.livBonusOprema.FullRowSelect = true;
             this.livBonusOprema.GridLines = true;
             this.livBonusOprema.HideSelection = false;
-            this.livBonusOprema.Location = new System.Drawing.Point(495, 39);
-            this.livBonusOprema.Margin = new System.Windows.Forms.Padding(2);
-            this.livBonusOprema.MaximumSize = new System.Drawing.Size(352, 173);
+            this.livBonusOprema.Location = new System.Drawing.Point(660, 48);
+            this.livBonusOprema.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.livBonusOprema.MaximumSize = new System.Drawing.Size(468, 212);
             this.livBonusOprema.Name = "livBonusOprema";
-            this.livBonusOprema.Size = new System.Drawing.Size(352, 145);
+            this.livBonusOprema.Size = new System.Drawing.Size(468, 178);
             this.livBonusOprema.TabIndex = 10;
             this.livBonusOprema.UseCompatibleStateImageBehavior = false;
             this.livBonusOprema.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Id";
             // 
             // columnHeader9
             // 
@@ -303,7 +345,7 @@ namespace Projekat2Deo_Verzija1.Forme
             // columnHeader11
             // 
             this.columnHeader11.Text = "PPredmet";
-            this.columnHeader11.Width = 58;
+            this.columnHeader11.Width = 78;
             // 
             // livTrenutniSegrti
             // 
@@ -318,11 +360,11 @@ namespace Projekat2Deo_Verzija1.Forme
             this.livTrenutniSegrti.FullRowSelect = true;
             this.livTrenutniSegrti.GridLines = true;
             this.livTrenutniSegrti.HideSelection = false;
-            this.livTrenutniSegrti.Location = new System.Drawing.Point(139, 39);
-            this.livTrenutniSegrti.Margin = new System.Windows.Forms.Padding(2);
-            this.livTrenutniSegrti.MaximumSize = new System.Drawing.Size(352, 173);
+            this.livTrenutniSegrti.Location = new System.Drawing.Point(185, 48);
+            this.livTrenutniSegrti.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.livTrenutniSegrti.MaximumSize = new System.Drawing.Size(468, 212);
             this.livTrenutniSegrti.Name = "livTrenutniSegrti";
-            this.livTrenutniSegrti.Size = new System.Drawing.Size(352, 145);
+            this.livTrenutniSegrti.Size = new System.Drawing.Size(468, 178);
             this.livTrenutniSegrti.TabIndex = 9;
             this.livTrenutniSegrti.UseCompatibleStateImageBehavior = false;
             this.livTrenutniSegrti.View = System.Windows.Forms.View.Details;
@@ -350,26 +392,29 @@ namespace Projekat2Deo_Verzija1.Forme
             // lblInventar
             // 
             this.lblInventar.AutoSize = true;
-            this.lblInventar.Location = new System.Drawing.Point(492, 16);
+            this.lblInventar.Location = new System.Drawing.Point(656, 20);
+            this.lblInventar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInventar.Name = "lblInventar";
-            this.lblInventar.Size = new System.Drawing.Size(88, 15);
+            this.lblInventar.Size = new System.Drawing.Size(100, 17);
             this.lblInventar.TabIndex = 10;
             this.lblInventar.Text = "Bonus oprema";
             // 
             // lblSegrti
             // 
             this.lblSegrti.AutoSize = true;
-            this.lblSegrti.Location = new System.Drawing.Point(136, 16);
+            this.lblSegrti.Location = new System.Drawing.Point(181, 20);
+            this.lblSegrti.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSegrti.Name = "lblSegrti";
-            this.lblSegrti.Size = new System.Drawing.Size(39, 15);
+            this.lblSegrti.Size = new System.Drawing.Size(45, 17);
             this.lblSegrti.TabIndex = 8;
             this.lblSegrti.Text = "Šegrti";
             // 
             // btnOtpustiSegrta
             // 
-            this.btnOtpustiSegrta.Location = new System.Drawing.Point(288, 189);
+            this.btnOtpustiSegrta.Location = new System.Drawing.Point(384, 233);
+            this.btnOtpustiSegrta.Margin = new System.Windows.Forms.Padding(4);
             this.btnOtpustiSegrta.Name = "btnOtpustiSegrta";
-            this.btnOtpustiSegrta.Size = new System.Drawing.Size(109, 23);
+            this.btnOtpustiSegrta.Size = new System.Drawing.Size(145, 28);
             this.btnOtpustiSegrta.TabIndex = 7;
             this.btnOtpustiSegrta.Text = "Otpusti";
             this.btnOtpustiSegrta.UseVisualStyleBackColor = true;
@@ -378,73 +423,83 @@ namespace Projekat2Deo_Verzija1.Forme
             // lblAlijansa
             // 
             this.lblAlijansa.AutoSize = true;
-            this.lblAlijansa.Location = new System.Drawing.Point(14, 148);
+            this.lblAlijansa.Location = new System.Drawing.Point(19, 182);
+            this.lblAlijansa.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAlijansa.Name = "lblAlijansa";
-            this.lblAlijansa.Size = new System.Drawing.Size(87, 15);
+            this.lblAlijansa.Size = new System.Drawing.Size(97, 17);
             this.lblAlijansa.TabIndex = 7;
             this.lblAlijansa.Text = "Nema alijanse";
             // 
             // lblSpecAtr
             // 
             this.lblSpecAtr.AutoSize = true;
-            this.lblSpecAtr.Location = new System.Drawing.Point(6, 103);
+            this.lblSpecAtr.Location = new System.Drawing.Point(8, 127);
+            this.lblSpecAtr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSpecAtr.Name = "lblSpecAtr";
-            this.lblSpecAtr.Size = new System.Drawing.Size(95, 15);
+            this.lblSpecAtr.Size = new System.Drawing.Size(109, 17);
             this.lblSpecAtr.TabIndex = 6;
             this.lblSpecAtr.Text = "SpecijalniAtribut";
             // 
             // lblZamor
             // 
             this.lblZamor.AutoSize = true;
-            this.lblZamor.Location = new System.Drawing.Point(6, 88);
+            this.lblZamor.Location = new System.Drawing.Point(8, 108);
+            this.lblZamor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblZamor.Name = "lblZamor";
-            this.lblZamor.Size = new System.Drawing.Size(91, 15);
+            this.lblZamor.Size = new System.Drawing.Size(104, 17);
             this.lblZamor.TabIndex = 5;
             this.lblZamor.Text = "Stepen zamora";
             // 
             // lblZdravlje
             // 
             this.lblZdravlje.AutoSize = true;
-            this.lblZdravlje.Location = new System.Drawing.Point(6, 73);
+            this.lblZdravlje.Location = new System.Drawing.Point(8, 90);
+            this.lblZdravlje.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblZdravlje.Name = "lblZdravlje";
-            this.lblZdravlje.Size = new System.Drawing.Size(50, 15);
+            this.lblZdravlje.Size = new System.Drawing.Size(59, 17);
             this.lblZdravlje.TabIndex = 4;
             this.lblZdravlje.Text = "Zdravlje";
             // 
             // lblIskustvo
             // 
             this.lblIskustvo.AutoSize = true;
-            this.lblIskustvo.Location = new System.Drawing.Point(6, 58);
+            this.lblIskustvo.Location = new System.Drawing.Point(8, 71);
+            this.lblIskustvo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIskustvo.Name = "lblIskustvo";
-            this.lblIskustvo.Size = new System.Drawing.Size(50, 15);
+            this.lblIskustvo.Size = new System.Drawing.Size(59, 17);
             this.lblIskustvo.TabIndex = 3;
             this.lblIskustvo.Text = "Iskustvo";
             // 
             // lblZlato
             // 
             this.lblZlato.AutoSize = true;
-            this.lblZlato.Location = new System.Drawing.Point(6, 43);
+            this.lblZlato.Location = new System.Drawing.Point(8, 53);
+            this.lblZlato.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblZlato.Name = "lblZlato";
-            this.lblZlato.Size = new System.Drawing.Size(80, 15);
+            this.lblZlato.Size = new System.Drawing.Size(91, 17);
             this.lblZlato.TabIndex = 2;
             this.lblZlato.Text = "Kolicina zlata";
             // 
             // lblRasa
             // 
             this.lblRasa.AutoSize = true;
-            this.lblRasa.Location = new System.Drawing.Point(6, 28);
+            this.lblRasa.Location = new System.Drawing.Point(8, 34);
+            this.lblRasa.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRasa.Name = "lblRasa";
-            this.lblRasa.Size = new System.Drawing.Size(36, 15);
+            this.lblRasa.Size = new System.Drawing.Size(41, 17);
             this.lblRasa.TabIndex = 1;
             this.lblRasa.Text = "Rasa";
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnDodajAlijansu);
             this.groupBox3.Controls.Add(this.livAlijanse);
             this.groupBox3.Controls.Add(this.btnPridruziSeAlijansi);
-            this.groupBox3.Location = new System.Drawing.Point(496, 385);
+            this.groupBox3.Location = new System.Drawing.Point(661, 474);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(438, 215);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(584, 265);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Alijanse";
@@ -463,11 +518,11 @@ namespace Projekat2Deo_Verzija1.Forme
             this.livAlijanse.FullRowSelect = true;
             this.livAlijanse.GridLines = true;
             this.livAlijanse.HideSelection = false;
-            this.livAlijanse.Location = new System.Drawing.Point(6, 19);
-            this.livAlijanse.Margin = new System.Windows.Forms.Padding(2);
-            this.livAlijanse.MaximumSize = new System.Drawing.Size(600, 173);
+            this.livAlijanse.Location = new System.Drawing.Point(8, 23);
+            this.livAlijanse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.livAlijanse.MaximumSize = new System.Drawing.Size(799, 212);
             this.livAlijanse.Name = "livAlijanse";
-            this.livAlijanse.Size = new System.Drawing.Size(427, 127);
+            this.livAlijanse.Size = new System.Drawing.Size(568, 155);
             this.livAlijanse.TabIndex = 11;
             this.livAlijanse.UseCompatibleStateImageBehavior = false;
             this.livAlijanse.View = System.Windows.Forms.View.Details;
@@ -499,9 +554,10 @@ namespace Projekat2Deo_Verzija1.Forme
             // 
             // btnPridruziSeAlijansi
             // 
-            this.btnPridruziSeAlijansi.Location = new System.Drawing.Point(153, 169);
+            this.btnPridruziSeAlijansi.Location = new System.Drawing.Point(49, 208);
+            this.btnPridruziSeAlijansi.Margin = new System.Windows.Forms.Padding(4);
             this.btnPridruziSeAlijansi.Name = "btnPridruziSeAlijansi";
-            this.btnPridruziSeAlijansi.Size = new System.Drawing.Size(154, 23);
+            this.btnPridruziSeAlijansi.Size = new System.Drawing.Size(205, 28);
             this.btnPridruziSeAlijansi.TabIndex = 4;
             this.btnPridruziSeAlijansi.Text = "Pridruzi se";
             this.btnPridruziSeAlijansi.UseVisualStyleBackColor = true;
@@ -512,9 +568,11 @@ namespace Projekat2Deo_Verzija1.Forme
             this.groupBox5.Controls.Add(this.livIndividualniZadaci);
             this.groupBox5.Controls.Add(this.btnDodajZadatak);
             this.groupBox5.Controls.Add(this.btnResiZadatak);
-            this.groupBox5.Location = new System.Drawing.Point(12, 385);
+            this.groupBox5.Location = new System.Drawing.Point(16, 474);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(478, 207);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Size = new System.Drawing.Size(637, 255);
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Individualni zadaci";
@@ -532,11 +590,11 @@ namespace Projekat2Deo_Verzija1.Forme
             this.livIndividualniZadaci.FullRowSelect = true;
             this.livIndividualniZadaci.GridLines = true;
             this.livIndividualniZadaci.HideSelection = false;
-            this.livIndividualniZadaci.Location = new System.Drawing.Point(9, 19);
-            this.livIndividualniZadaci.Margin = new System.Windows.Forms.Padding(2);
-            this.livIndividualniZadaci.MaximumSize = new System.Drawing.Size(352, 173);
+            this.livIndividualniZadaci.Location = new System.Drawing.Point(12, 23);
+            this.livIndividualniZadaci.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.livIndividualniZadaci.MaximumSize = new System.Drawing.Size(468, 212);
             this.livIndividualniZadaci.Name = "livIndividualniZadaci";
-            this.livIndividualniZadaci.Size = new System.Drawing.Size(313, 173);
+            this.livIndividualniZadaci.Size = new System.Drawing.Size(416, 212);
             this.livIndividualniZadaci.TabIndex = 8;
             this.livIndividualniZadaci.UseCompatibleStateImageBehavior = false;
             this.livIndividualniZadaci.View = System.Windows.Forms.View.Details;
@@ -563,9 +621,10 @@ namespace Projekat2Deo_Verzija1.Forme
             // 
             // btnDodajZadatak
             // 
-            this.btnDodajZadatak.Location = new System.Drawing.Point(327, 48);
+            this.btnDodajZadatak.Location = new System.Drawing.Point(436, 59);
+            this.btnDodajZadatak.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodajZadatak.Name = "btnDodajZadatak";
-            this.btnDodajZadatak.Size = new System.Drawing.Size(140, 23);
+            this.btnDodajZadatak.Size = new System.Drawing.Size(187, 28);
             this.btnDodajZadatak.TabIndex = 12;
             this.btnDodajZadatak.Text = "Dodaj";
             this.btnDodajZadatak.UseVisualStyleBackColor = true;
@@ -573,9 +632,10 @@ namespace Projekat2Deo_Verzija1.Forme
             // 
             // btnResiZadatak
             // 
-            this.btnResiZadatak.Location = new System.Drawing.Point(327, 19);
+            this.btnResiZadatak.Location = new System.Drawing.Point(436, 23);
+            this.btnResiZadatak.Margin = new System.Windows.Forms.Padding(4);
             this.btnResiZadatak.Name = "btnResiZadatak";
-            this.btnResiZadatak.Size = new System.Drawing.Size(140, 23);
+            this.btnResiZadatak.Size = new System.Drawing.Size(187, 28);
             this.btnResiZadatak.TabIndex = 10;
             this.btnResiZadatak.Text = "Resi";
             this.btnResiZadatak.UseVisualStyleBackColor = true;
@@ -583,24 +643,36 @@ namespace Projekat2Deo_Verzija1.Forme
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1298, 554);
+            this.button1.Location = new System.Drawing.Point(1731, 682);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 38);
+            this.button1.Size = new System.Drawing.Size(187, 47);
             this.button1.TabIndex = 6;
             this.button1.Text = "Završi sesiju";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnDodajAlijansu
+            // 
+            this.btnDodajAlijansu.Location = new System.Drawing.Point(335, 207);
+            this.btnDodajAlijansu.Name = "btnDodajAlijansu";
+            this.btnDodajAlijansu.Size = new System.Drawing.Size(205, 28);
+            this.btnDodajAlijansu.TabIndex = 7;
+            this.btnDodajAlijansu.Text = "Napravi sopstvenu alijansu";
+            this.btnDodajAlijansu.UseVisualStyleBackColor = true;
+            this.btnDodajAlijansu.Click += new System.EventHandler(this.btnDodajAlijansu_Click);
+            // 
             // IgracForma
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1450, 604);
+            this.ClientSize = new System.Drawing.Size(1933, 743);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "IgracForma";
             this.Text = "IgracForma";
             this.groupBox1.ResumeLayout(false);
@@ -666,7 +738,11 @@ namespace Projekat2Deo_Verzija1.Forme
         private System.Windows.Forms.ColumnHeader columnHeader23;
         private System.Windows.Forms.Button btnUpravljajAlijansom;
         private System.Windows.Forms.ColumnHeader columnHeader15;
-        private System.Windows.Forms.Button btnObrisiOpremu;
+        private System.Windows.Forms.Button btnOslobodiBonusOpremu;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnOslobodiKljucnuOpremu;
+        private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Button btnDodajAlijansu;
     }
 }

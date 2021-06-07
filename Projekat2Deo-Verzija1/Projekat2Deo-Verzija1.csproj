@@ -105,6 +105,12 @@
     <Compile Include="Forme\IgracForma.Designer.cs">
       <DependentUpon>IgracForma.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\NovaAlijansaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\NovaAlijansaForma.Designer.cs">
+      <DependentUpon>NovaAlijansaForma.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\OpremaIPredmetiForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,12 @@
     </Compile>
     <Compile Include="Forme\SegrtForma.Designer.cs">
       <DependentUpon>SegrtForma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\ServerForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\ServerForma.Designer.cs">
+      <DependentUpon>ServerForma.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\ZadatakForma.cs">
       <SubType>Form</SubType>
@@ -170,6 +182,9 @@
     <EmbeddedResource Include="Forme\IgracForma.resx">
       <DependentUpon>IgracForma.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\NovaAlijansaForma.resx">
+      <DependentUpon>NovaAlijansaForma.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\OpremaIPredmetiForma.resx">
       <DependentUpon>OpremaIPredmetiForma.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\SegrtForma.resx">
       <DependentUpon>SegrtForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\ServerForma.resx">
+      <DependentUpon>ServerForma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\ZadatakForma.resx">
       <DependentUpon>ZadatakForma.cs</DependentUpon>

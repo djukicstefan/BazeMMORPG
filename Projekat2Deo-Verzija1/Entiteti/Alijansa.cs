@@ -8,7 +8,7 @@ namespace Projekat2Deo_Verzija1.Entiteti
 {
     public class Alijansa
     {
-        public virtual String Naziv { get; protected set; }
+        public virtual String Naziv { get; set; }
         public virtual int MaxIgraca { get; set; }
         public virtual int MinIgraca { get; set; }
         public virtual int BonusIskustvo { get; set; }

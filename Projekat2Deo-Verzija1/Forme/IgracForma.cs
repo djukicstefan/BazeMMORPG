@@ -15,8 +15,8 @@ namespace Projekat2Deo_Verzija1.Forme
     {
         private DTOs.IgracBasic igrac;
         private List<DTOs.SegrtBasic> TrenutniSegrti;
-        private List<DTOs.BonusPredmetiIOruzijaBasic> BonusOpremaLika;
-        private List<DTOs.KljucniPredmetiBasic> KljucnaOpremaLika;
+        private List<DTOs.BonusPredmetiIOruzijaPregled> BonusOpremaLika;
+        private List<DTOs.KljucniPredmetiPregled> KljucnaOpremaLika;
         private List<DTOs.IndividualniZadaciBasic> listaZadataka;
         private List<DTOs.AlijansaBasic> alijanse;
 
@@ -72,9 +72,10 @@ namespace Projekat2Deo_Verzija1.Forme
             
             if (BonusOpremaLika.Count > 0)
             {
-                foreach (DTOs.BonusPredmetiIOruzijaBasic bo in BonusOpremaLika)
+                foreach (DTOs.BonusPredmetiIOruzijaPregled bo in BonusOpremaLika)
                 {
                     ListViewItem item = new ListViewItem(new string[] {
+                        bo.Id.ToString(),
                         bo.BrojIskustvenihPoena.ToString(),
                         bo.Rasa,
                         bo.PPredmet.ToString()
@@ -87,9 +88,10 @@ namespace Projekat2Deo_Verzija1.Forme
 
             if (KljucnaOpremaLika.Count > 0)
             {
-                foreach (DTOs.KljucniPredmetiBasic ko in KljucnaOpremaLika)
+                foreach (DTOs.KljucniPredmetiPregled ko in KljucnaOpremaLika)
                 {
                     ListViewItem item = new ListViewItem(new string[] {
+                        ko.Id.ToString(),
                         ko.Naziv,
                         ko.Opis,
                         igrac.Nadimak
@@ -236,6 +238,30 @@ namespace Projekat2Deo_Verzija1.Forme
         {
             DTOManager.ZavrsiSesiju(igrac);
             Close();
+        }
+
+        private void btnOslobodiBonusOpremu_Click(object sender, EventArgs e)
+        {
+            DTOManager.OslobodiBonusOpremu(igrac.Id, int.Parse(livBonusOprema.SelectedItems[0].SubItems[0].Text));
+            UcitajInventar();
+        }
+
+        private void btnOslobodiKljucnuOpremu_Click(object sender, EventArgs e)
+        {
+            DTOManager.OslobodiKljucnuOpremu(igrac.Id, int.Parse(livKljucnaOprema.SelectedItems[0].SubItems[0].Text));
+            UcitajInventar();
+        }
+
+        private void btnDodajAlijansu_Click(object sender, EventArgs e)
+        {
+            if(lblAlijansa.Text == "Nema alijanse")
+            {
+                (new NovaAlijansaForma(this, igrac.Id)).ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show($"Morate prvo napustiti alijansu kojoj ste priključeni!");
+            }
         }
     }
 }
