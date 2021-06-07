@@ -35,7 +35,6 @@ namespace Projekat2Deo_Verzija1.Forme
                 IgracForma igf = new IgracForma(igrac);
                 igf.ShowDialog();
                 Close();
-                parent.Close();
             }
             else
             {

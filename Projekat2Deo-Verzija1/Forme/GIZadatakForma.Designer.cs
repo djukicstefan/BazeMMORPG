@@ -1,7 +1,7 @@
 ﻿
 namespace Projekat2Deo_Verzija1.Forme
 {
-    partial class GrupniZadatakForma
+    partial class GIZadatakForma
     {
         /// <summary>
         /// Required designer variable.

@@ -12,21 +12,34 @@ namespace Projekat2Deo_Verzija1.Forme
 {
     public partial class ZadatakForma : Form
     {
-        public AlijansaForma parent;
+        public AlijansaForma parentAlijansa;
+        public IgracForma parentIgrac;
         private string nazivAlijanse;
+        private int idIgraca;
 
         public ZadatakForma(AlijansaForma parent, string nazivAlijanse)
         {
             InitializeComponent();
 
-            this.parent = parent;
+            parentAlijansa = parent;
             this.nazivAlijanse = nazivAlijanse;
+        }
+
+        public ZadatakForma(IgracForma parent, int idIgraca)
+        {
+            InitializeComponent();
+
+            parentIgrac = parent;
+            this.idIgraca = idIgraca;
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
             DTOManager.NapraviZadatak((int)numBonus.Value);
-            (new GrupniZadatakForma(this, nazivAlijanse)).ShowDialog();
+            if (parentAlijansa != null)
+                (new GIZadatakForma(this, nazivAlijanse)).ShowDialog();
+            else
+                (new GIZadatakForma(this, idIgraca)).ShowDialog();
             Close();
         }
     }

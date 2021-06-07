@@ -459,6 +459,8 @@ namespace Projekat2Deo_Verzija1
 
                 if (igrac != null)
                 {
+                    igrac[0].VremePovezivanja = DateTime.Now;
+
                     igracc.Id = igrac[0].Id;
                     igracc.Nadimak = igrac[0].Nadimak;
                     igracc.Lozinka = igrac[0].Lozinka;
@@ -473,6 +475,9 @@ namespace Projekat2Deo_Verzija1
                     igracc.PovezanNaServer = VratiServer(igrac[0].PovezanNaServer.Id);
                     igracc.PripadaAlijansi = igrac[0].PripadaAlijansi != null ? VratiAlijansu(igrac[0].PripadaAlijansi.Naziv) : null;
                     igracc.KontroliseLika = VratiLika(igrac[0].KontroliseLika.Id);
+
+                    s.Update(igrac[0]);
+                    s.Flush();
                 }
                 
             }
@@ -483,7 +488,30 @@ namespace Projekat2Deo_Verzija1
             return igracc;
         }
 
-        
+        public static void ZavrsiSesiju(DTOs.IgracBasic igrac)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Igrac i = s.Get<Igrac>(igrac.Id);
+                i.VremeOdjavljivanja = DateTime.Now;
+                
+                Random r = new Random();
+
+                i.KolicinaZlataUSesiji += r.Next() % 10000;
+                i.BrojPoenaUSesiji += r.Next() % 10000;
+
+                s.Update(i);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
 
         #endregion
 
@@ -628,6 +656,9 @@ namespace Projekat2Deo_Verzija1
                 lik.StepenZamora = l.StepenZamora;
                 lik.Zdravlje = l.Zdravlje;
                 lik.KolicinaZlata = l.KolicinaZlata;
+                lik.TipOruzja = l.TipOruzja;
+                lik.Mana = l.Mana;
+                lik.VestinaSkrivanja = l.VestinaSkrivanja;
                 lik.Rasa = p[2];
                 s.Close();
             }
@@ -666,6 +697,10 @@ namespace Projekat2Deo_Verzija1
 
         #endregion
 
+        #region Oprema
+
+        #endregion
+
         #region KljucniPredmeti
         public static List<DTOs.KljucniPredmetiBasic> VratiKljucnePredmeteLika(int idLika)
         {
@@ -695,6 +730,37 @@ namespace Projekat2Deo_Verzija1
                 MessageBox.Show(ec.Message);
             }
             return listaOprema;
+        }
+
+        public static void DodajKljucniPredmet(string nazivOpreme, string opisOpreme, string nazivVlasnika, int idIgraca, int idZadatka)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zadatak z = s.Get<Zadatak>(idZadatka);
+
+                KljucniPredmeti kp = new KljucniPredmeti();
+                kp.Zadatak = z;
+                kp.Naziv = nazivOpreme;
+                kp.Opis = opisOpreme;
+                kp.NadimakVlasnika = nazivVlasnika;
+
+                Igrac i = s.Get<Igrac>(idIgraca);
+
+                i.KontroliseLika.Oprema.Add(kp);
+                kp.Likovi.Add(i.KontroliseLika);
+
+                s.Update(i.KontroliseLika);
+                s.Save(kp);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
         }
         #endregion
 
@@ -773,6 +839,37 @@ namespace Projekat2Deo_Verzija1
                 MessageBox.Show(ec.Message);
             }
         }
+
+        public static void DodajBonusPredmetiOruzje(int bonusIskustva, string rasa, char pPredmet, int idIgraca, int idZadatka)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zadatak z = s.Get<Zadatak>(idZadatka);
+
+                BonusPredmetiIOruzija bp = new BonusPredmetiIOruzija();
+                bp.Zadatak = z;
+                bp.BrojIskustvenihPoena = bonusIskustva;
+                bp.Rasa = rasa;
+                bp.PPredmet = pPredmet;
+
+                Igrac i = s.Get<Igrac>(idIgraca);
+
+                i.KontroliseLika.Oprema.Add(bp);
+                bp.Likovi.Add(i.KontroliseLika);
+
+                s.Update(i.KontroliseLika);
+                s.Save(bp);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
         #endregion
 
         #region IndividualniZadaci
@@ -813,10 +910,80 @@ namespace Projekat2Deo_Verzija1
             }
             return listaIndividualnihZadataka;
         }
+
+        public static void ResiIndividualniZadatak(int idIndividualnogZadatka)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IndividualniZadaci iz = s.Get<IndividualniZadaci>(idIndividualnogZadatka);
+
+                Zadatak z = s.Get<Zadatak>(iz.ZadatakKojiSeResava.Id);
+
+                iz.IgracKojiResava.KontroliseLika.Iskustvo += iz.ZadatakKojiSeResava.BonusIskustva;
+                s.Update(iz.IgracKojiResava.KontroliseLika);
+                
+                z.Oprema.Clear();
+                z.Igraci.Clear();
+
+                IList<Oprema> oprema = s.QueryOver<Oprema>()
+                                        .Where(x => x.Zadatak.Id == z.Id)
+                                        .List<Oprema>();
+
+                oprema.ToList().ForEach(x => {
+                    x.Zadatak = null;
+                    s.Update(x);
+                });
+
+                iz.ZadatakKojiSeResava = null;
+                iz.IgracKojiResava = null;
+
+                s.Delete(z);
+                s.Delete(iz);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        public static void DodajIndividualniZadatak(int idIgraca, string vremeResavanja, int zadId)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zadatak z = s.Get<Zadatak>(zadId);
+                Igrac i = s.Get<Igrac>(idIgraca);
+
+                IndividualniZadaci iz = new IndividualniZadaci();
+                iz.ZadatakKojiSeResava = z;
+                iz.IgracKojiResava = i;
+                iz.VremeResavanja = vremeResavanja;
+
+                i.IndividualniZadaci.Add(iz);
+                z.Igraci.Add(iz);
+
+                s.Update(i);
+                s.Update(z);
+                s.Save(iz);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
         #endregion
 
         #region GrupniZadaci
-        
+
         public static List<DTOs.GrupniZadaciBasic> VratiGrupneZadatkeAlijanse(string naziv)
         {
             List<DTOs.GrupniZadaciBasic> listaGrupnihZadataka = new List<DTOs.GrupniZadaciBasic>();

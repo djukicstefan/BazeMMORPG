@@ -62,5 +62,5 @@ D:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Proj
 d:\Visual Studio 2019\Projekat2Deo-Verzija1\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo-Verzija1.csprojAssemblyReference.cache
 D:\Fakultet\TRECA\VI\Sistemi baza podataka\App\BazeMMORPG\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.Forme.OpremaIPredmetiForma.resources
 D:\Fakultet\TRECA\VI\Sistemi baza podataka\App\BazeMMORPG\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.Forme.SegrtForma.resources
-D:\Fakultet\TRECA\VI\Sistemi baza podataka\App\BazeMMORPG\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.Forme.GrupniZadatakForma.resources
 D:\Fakultet\TRECA\VI\Sistemi baza podataka\App\BazeMMORPG\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.Forme.ZadatakForma.resources
+D:\Fakultet\TRECA\VI\Sistemi baza podataka\App\BazeMMORPG\Projekat2Deo-Verzija1\obj\Debug\Projekat2Deo_Verzija1.Forme.GIZadatakForma.resources

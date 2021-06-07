@@ -93,11 +93,11 @@
     <Compile Include="Forme\AlijansaForma.Designer.cs">
       <DependentUpon>AlijansaForma.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forme\GrupniZadatakForma.cs">
+    <Compile Include="Forme\GIZadatakForma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forme\GrupniZadatakForma.Designer.cs">
-      <DependentUpon>GrupniZadatakForma.cs</DependentUpon>
+    <Compile Include="Forme\GIZadatakForma.Designer.cs">
+      <DependentUpon>GIZadatakForma.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\IgracForma.cs">
       <SubType>Form</SubType>
@@ -164,8 +164,8 @@
     <EmbeddedResource Include="Forme\AlijansaForma.resx">
       <DependentUpon>AlijansaForma.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forme\GrupniZadatakForma.resx">
-      <DependentUpon>GrupniZadatakForma.cs</DependentUpon>
+    <EmbeddedResource Include="Forme\GIZadatakForma.resx">
+      <DependentUpon>GIZadatakForma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\IgracForma.resx">
       <DependentUpon>IgracForma.cs</DependentUpon>

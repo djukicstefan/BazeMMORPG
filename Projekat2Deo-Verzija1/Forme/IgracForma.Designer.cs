@@ -36,6 +36,9 @@ namespace Projekat2Deo_Verzija1.Forme
             this.lblPrezime = new System.Windows.Forms.Label();
             this.lblIme = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnObrisiOpremu = new System.Windows.Forms.Button();
+            this.btnDodajOpremu = new System.Windows.Forms.Button();
+            this.btnUpravljajAlijansom = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnZaposliZegrta = new System.Windows.Forms.Button();
             this.btnNapustiAlijansu = new System.Windows.Forms.Button();
@@ -75,13 +78,10 @@ namespace Projekat2Deo_Verzija1.Forme
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnObrisiZadatak = new System.Windows.Forms.Button();
-            this.btnDodajZadatak = new System.Windows.Forms.Button();
-            this.btnInfoZadatak = new System.Windows.Forms.Button();
-            this.btnResiZadatak = new System.Windows.Forms.Button();
-            this.btnItems = new System.Windows.Forms.Button();
-            this.btnUpravljajAlijansom = new System.Windows.Forms.Button();
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnDodajZadatak = new System.Windows.Forms.Button();
+            this.btnResiZadatak = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -149,6 +149,8 @@ namespace Projekat2Deo_Verzija1.Forme
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnObrisiOpremu);
+            this.groupBox2.Controls.Add(this.btnDodajOpremu);
             this.groupBox2.Controls.Add(this.btnUpravljajAlijansom);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.btnZaposliZegrta);
@@ -168,15 +170,44 @@ namespace Projekat2Deo_Verzija1.Forme
             this.groupBox2.Controls.Add(this.lblRasa);
             this.groupBox2.Location = new System.Drawing.Point(12, 147);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1171, 218);
+            this.groupBox2.Size = new System.Drawing.Size(1374, 218);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informacije o liku";
             // 
+            // btnObrisiOpremu
+            // 
+            this.btnObrisiOpremu.Location = new System.Drawing.Point(1208, 161);
+            this.btnObrisiOpremu.Name = "btnObrisiOpremu";
+            this.btnObrisiOpremu.Size = new System.Drawing.Size(153, 23);
+            this.btnObrisiOpremu.TabIndex = 15;
+            this.btnObrisiOpremu.Text = "Obrisi";
+            this.btnObrisiOpremu.UseVisualStyleBackColor = true;
+            // 
+            // btnDodajOpremu
+            // 
+            this.btnDodajOpremu.Location = new System.Drawing.Point(1208, 39);
+            this.btnDodajOpremu.Name = "btnDodajOpremu";
+            this.btnDodajOpremu.Size = new System.Drawing.Size(153, 23);
+            this.btnDodajOpremu.TabIndex = 7;
+            this.btnDodajOpremu.Text = "Dodaj";
+            this.btnDodajOpremu.UseVisualStyleBackColor = true;
+            this.btnDodajOpremu.Click += new System.EventHandler(this.btnDodajOpremu_Click);
+            // 
+            // btnUpravljajAlijansom
+            // 
+            this.btnUpravljajAlijansom.Location = new System.Drawing.Point(9, 166);
+            this.btnUpravljajAlijansom.Name = "btnUpravljajAlijansom";
+            this.btnUpravljajAlijansom.Size = new System.Drawing.Size(110, 23);
+            this.btnUpravljajAlijansom.TabIndex = 13;
+            this.btnUpravljajAlijansom.Text = "Upravljaj";
+            this.btnUpravljajAlijansom.UseVisualStyleBackColor = true;
+            this.btnUpravljajAlijansom.Click += new System.EventHandler(this.btnUpravljajAlijansom_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(690, 16);
+            this.label1.Location = new System.Drawing.Point(848, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 15);
             this.label1.TabIndex = 12;
@@ -214,7 +245,7 @@ namespace Projekat2Deo_Verzija1.Forme
             this.livKljucnaOprema.FullRowSelect = true;
             this.livKljucnaOprema.GridLines = true;
             this.livKljucnaOprema.HideSelection = false;
-            this.livKljucnaOprema.Location = new System.Drawing.Point(693, 39);
+            this.livKljucnaOprema.Location = new System.Drawing.Point(851, 39);
             this.livKljucnaOprema.Margin = new System.Windows.Forms.Padding(2);
             this.livKljucnaOprema.MaximumSize = new System.Drawing.Size(352, 173);
             this.livKljucnaOprema.Name = "livKljucnaOprema";
@@ -231,7 +262,7 @@ namespace Projekat2Deo_Verzija1.Forme
             // columnHeader13
             // 
             this.columnHeader13.Text = "Opis";
-            this.columnHeader13.Width = 192;
+            this.columnHeader13.Width = 130;
             // 
             // columnHeader14
             // 
@@ -250,11 +281,11 @@ namespace Projekat2Deo_Verzija1.Forme
             this.livBonusOprema.FullRowSelect = true;
             this.livBonusOprema.GridLines = true;
             this.livBonusOprema.HideSelection = false;
-            this.livBonusOprema.Location = new System.Drawing.Point(402, 39);
+            this.livBonusOprema.Location = new System.Drawing.Point(495, 39);
             this.livBonusOprema.Margin = new System.Windows.Forms.Padding(2);
             this.livBonusOprema.MaximumSize = new System.Drawing.Size(352, 173);
             this.livBonusOprema.Name = "livBonusOprema";
-            this.livBonusOprema.Size = new System.Drawing.Size(287, 145);
+            this.livBonusOprema.Size = new System.Drawing.Size(352, 145);
             this.livBonusOprema.TabIndex = 10;
             this.livBonusOprema.UseCompatibleStateImageBehavior = false;
             this.livBonusOprema.View = System.Windows.Forms.View.Details;
@@ -291,7 +322,7 @@ namespace Projekat2Deo_Verzija1.Forme
             this.livTrenutniSegrti.Margin = new System.Windows.Forms.Padding(2);
             this.livTrenutniSegrti.MaximumSize = new System.Drawing.Size(352, 173);
             this.livTrenutniSegrti.Name = "livTrenutniSegrti";
-            this.livTrenutniSegrti.Size = new System.Drawing.Size(259, 145);
+            this.livTrenutniSegrti.Size = new System.Drawing.Size(352, 145);
             this.livTrenutniSegrti.TabIndex = 9;
             this.livTrenutniSegrti.UseCompatibleStateImageBehavior = false;
             this.livTrenutniSegrti.View = System.Windows.Forms.View.Details;
@@ -319,7 +350,7 @@ namespace Projekat2Deo_Verzija1.Forme
             // lblInventar
             // 
             this.lblInventar.AutoSize = true;
-            this.lblInventar.Location = new System.Drawing.Point(399, 16);
+            this.lblInventar.Location = new System.Drawing.Point(492, 16);
             this.lblInventar.Name = "lblInventar";
             this.lblInventar.Size = new System.Drawing.Size(88, 15);
             this.lblInventar.TabIndex = 10;
@@ -479,9 +510,7 @@ namespace Projekat2Deo_Verzija1.Forme
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.livIndividualniZadaci);
-            this.groupBox5.Controls.Add(this.btnObrisiZadatak);
             this.groupBox5.Controls.Add(this.btnDodajZadatak);
-            this.groupBox5.Controls.Add(this.btnInfoZadatak);
             this.groupBox5.Controls.Add(this.btnResiZadatak);
             this.groupBox5.Location = new System.Drawing.Point(12, 385);
             this.groupBox5.Name = "groupBox5";
@@ -527,72 +556,47 @@ namespace Projekat2Deo_Verzija1.Forme
             this.columnHeader3.Text = "Vreme rešavanja";
             this.columnHeader3.Width = 131;
             // 
-            // btnObrisiZadatak
-            // 
-            this.btnObrisiZadatak.Location = new System.Drawing.Point(327, 169);
-            this.btnObrisiZadatak.Name = "btnObrisiZadatak";
-            this.btnObrisiZadatak.Size = new System.Drawing.Size(140, 23);
-            this.btnObrisiZadatak.TabIndex = 13;
-            this.btnObrisiZadatak.Text = "Obrisi";
-            this.btnObrisiZadatak.UseVisualStyleBackColor = true;
-            // 
-            // btnDodajZadatak
-            // 
-            this.btnDodajZadatak.Location = new System.Drawing.Point(327, 140);
-            this.btnDodajZadatak.Name = "btnDodajZadatak";
-            this.btnDodajZadatak.Size = new System.Drawing.Size(140, 23);
-            this.btnDodajZadatak.TabIndex = 12;
-            this.btnDodajZadatak.Text = "Dodaj";
-            this.btnDodajZadatak.UseVisualStyleBackColor = true;
-            // 
-            // btnInfoZadatak
-            // 
-            this.btnInfoZadatak.Location = new System.Drawing.Point(327, 48);
-            this.btnInfoZadatak.Name = "btnInfoZadatak";
-            this.btnInfoZadatak.Size = new System.Drawing.Size(136, 23);
-            this.btnInfoZadatak.TabIndex = 11;
-            this.btnInfoZadatak.Text = "Info";
-            this.btnInfoZadatak.UseVisualStyleBackColor = true;
-            // 
-            // btnResiZadatak
-            // 
-            this.btnResiZadatak.Location = new System.Drawing.Point(327, 19);
-            this.btnResiZadatak.Name = "btnResiZadatak";
-            this.btnResiZadatak.Size = new System.Drawing.Size(136, 23);
-            this.btnResiZadatak.TabIndex = 10;
-            this.btnResiZadatak.Text = "Resi";
-            this.btnResiZadatak.UseVisualStyleBackColor = true;
-            // 
-            // btnItems
-            // 
-            this.btnItems.Location = new System.Drawing.Point(362, 118);
-            this.btnItems.Name = "btnItems";
-            this.btnItems.Size = new System.Drawing.Size(128, 23);
-            this.btnItems.TabIndex = 7;
-            this.btnItems.Text = "Manage items";
-            this.btnItems.UseVisualStyleBackColor = true;
-            // 
-            // btnUpravljajAlijansom
-            // 
-            this.btnUpravljajAlijansom.Location = new System.Drawing.Point(9, 166);
-            this.btnUpravljajAlijansom.Name = "btnUpravljajAlijansom";
-            this.btnUpravljajAlijansom.Size = new System.Drawing.Size(110, 23);
-            this.btnUpravljajAlijansom.TabIndex = 13;
-            this.btnUpravljajAlijansom.Text = "Upravljaj";
-            this.btnUpravljajAlijansom.UseVisualStyleBackColor = true;
-            this.btnUpravljajAlijansom.Click += new System.EventHandler(this.btnUpravljajAlijansom_Click);
-            // 
             // columnHeader15
             // 
             this.columnHeader15.Text = "Bonus iskustva";
             this.columnHeader15.Width = 85;
             // 
+            // btnDodajZadatak
+            // 
+            this.btnDodajZadatak.Location = new System.Drawing.Point(327, 48);
+            this.btnDodajZadatak.Name = "btnDodajZadatak";
+            this.btnDodajZadatak.Size = new System.Drawing.Size(140, 23);
+            this.btnDodajZadatak.TabIndex = 12;
+            this.btnDodajZadatak.Text = "Dodaj";
+            this.btnDodajZadatak.UseVisualStyleBackColor = true;
+            this.btnDodajZadatak.Click += new System.EventHandler(this.btnDodajZadatak_Click);
+            // 
+            // btnResiZadatak
+            // 
+            this.btnResiZadatak.Location = new System.Drawing.Point(327, 19);
+            this.btnResiZadatak.Name = "btnResiZadatak";
+            this.btnResiZadatak.Size = new System.Drawing.Size(140, 23);
+            this.btnResiZadatak.TabIndex = 10;
+            this.btnResiZadatak.Text = "Resi";
+            this.btnResiZadatak.UseVisualStyleBackColor = true;
+            this.btnResiZadatak.Click += new System.EventHandler(this.btnResiZadatak_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1298, 554);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(140, 38);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Završi sesiju";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // IgracForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1287, 604);
-            this.Controls.Add(this.btnItems);
+            this.ClientSize = new System.Drawing.Size(1450, 604);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -631,13 +635,11 @@ namespace Projekat2Deo_Verzija1.Forme
         private System.Windows.Forms.Button btnNapustiAlijansu;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btnResiZadatak;
-        private System.Windows.Forms.Button btnInfoZadatak;
-        private System.Windows.Forms.Button btnObrisiZadatak;
         private System.Windows.Forms.Button btnDodajZadatak;
         private System.Windows.Forms.Button btnOtpustiSegrta;
         private System.Windows.Forms.Button btnZaposliZegrta;
         private System.Windows.Forms.Label lblInventar;
-        private System.Windows.Forms.Button btnItems;
+        private System.Windows.Forms.Button btnDodajOpremu;
         private System.Windows.Forms.ListView livIndividualniZadaci;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
@@ -664,5 +666,7 @@ namespace Projekat2Deo_Verzija1.Forme
         private System.Windows.Forms.ColumnHeader columnHeader23;
         private System.Windows.Forms.Button btnUpravljajAlijansom;
         private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.Button btnObrisiOpremu;
+        private System.Windows.Forms.Button button1;
     }
 }
